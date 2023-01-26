@@ -1,0 +1,444 @@
+#services {
+	h2 {
+		font-weight: 500;
+		font-size: 288px;
+		line-height: 1;
+		color: rgba(37, 37, 37, 0.1);
+		position: absolute;
+		z-index: 1;
+		left: 0;
+		top: 15px;
+	}
+
+	.row {
+		padding-top: 190px;
+		padding-bottom: 60px;
+		position: relative;
+		z-index: 2;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.service_card {
+		width: 265px;
+		background: $back;
+		box-shadow: -4px -4px 17px rgba(136, 136, 136, 0.25), 4px 4px 17px rgba(193, 193, 193, 0.15);
+		border-radius: 20px;
+		text-align: center;
+		display: block;
+		padding-top: 18px;
+		margin-bottom: 50px;
+		position: relative;
+
+		h3 {
+			font-weight: 500;
+			font-size: 24px;
+			line-height: 147.7%;
+		}
+
+		.cost {
+			font-size: 24px;
+			line-height: 147.7%;
+		}
+
+		.line {
+			margin-top: 19px;
+			margin-bottom: 22px;
+			display: inline-block;
+			height: 1px;
+			width: 118px;
+			background: $black;
+		}
+
+		.description {
+			display: inline-block;
+			width: 212px;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 147.7%;
+			color: rgba(37, 37, 37, 0.75);
+			margin-bottom: 140px;
+		}
+
+		.more {
+			position: absolute;
+			left: 0;
+			bottom: 90px;
+			width: 100%;
+			text-align: center;
+			font-size: 16px;
+			line-height: 24px;
+			cursor: pointer;
+			vertical-align: middle;
+			z-index: 1;
+
+			.arrow {
+				display: inline-block;
+				width: 24px;
+				height: 24px;
+				background: $black;
+				margin-right: 8px;
+				vertical-align: middle;
+				border-radius: 12px;
+				position: relative;
+
+				svg {
+					fill: $back;
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					margin-left: -3px;
+					margin-top: -6px;
+				}
+			}
+		}
+
+		.order_service {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			display: block;
+			width: 100%;
+			height: 62px;
+			background: $red;
+			border-radius: 0px 0px 20px 20px;
+			text-align: center;
+			line-height: 62px;
+			font-size: 18px;
+			color: $back;
+			cursor: pointer;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			transition-duration: 0.1s;
+			z-index: 2;
+
+			&:hover {
+				background: $black;
+			}
+		}
+	}
+}
+
+@media (max-width: 1150px) {
+	#services {
+		text-align: center;
+
+		h2 {
+			font-weight: 500;
+			font-size: 30px;
+			line-height: 147.7%;
+			color: $font;
+			position: relative;
+			left: auto;
+			top: auto;
+			margin-top: 30px;
+			margin-bottom: 45px;
+		}
+
+		.row {
+			padding-top: 0;
+			padding-bottom: 0;
+			justify-content: center;
+		}
+
+		.service_card {
+			width: 264px;
+			padding-top: 15px;
+			margin-bottom: 40px;
+			margin-left: 70px;
+			margin-right: 70px;
+
+			h3 {
+				font-size: 18px;
+			}
+
+			.cost {
+				font-size: 18px;
+			}
+
+			.line {
+				margin-top: 14px;
+				margin-bottom: 19px;
+			}
+
+			.description {
+				display: inline-block;
+				font-size: 13px;
+				color: #616161;
+				margin-bottom: 80px;
+			}
+
+			.more {
+				width: 100%;
+				height: 100%;
+				left: 0;
+				bottom: 0;
+
+				span {
+					display: none;
+				}
+
+				.arrow {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 820px) {
+	#services {
+		.service_card {
+			margin-left: 20px;
+			margin-right: 20px;
+		}
+	}
+}
+
+@media (max-width: 500px) {
+	#services {
+		.service_card {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+}
+
+//---------------------страница услуг-------------------------------
+#services_page {
+	padding-top: 52px;
+	padding-bottom: 61px;
+
+	h1 {
+		margin-bottom: 51px;
+		font-weight: 500;
+		font-size: 55px;
+		line-height: 147.7%;
+	}
+
+	.row {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.col {
+		&:nth-child(1) {
+			width: 585px;
+		}
+
+		&:nth-child(2) {
+			width: 588px;
+		}
+	}
+
+	h2 {
+		font-weight: 500;
+		font-size: 50px;
+		line-height: 147.7%;
+		color: #505050;
+		margin-bottom: 16px;
+	}
+
+	.text {
+		font-size: 16px;
+		line-height: 147.7%;
+		margin-bottom: 46px;
+	}
+
+	.video {
+		position: relative;
+		border-radius: 15px;
+		overflow: hidden;
+		cursor: pointer;
+		width: 100%;
+		height: 307px;
+
+		video {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+
+		.back {
+			display: flex;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(88, 88, 88, 0.4);
+			backdrop-filter: blur(10px);
+			transition: 0.3s;
+		}
+
+		svg {
+			margin: auto;
+			fill: rgba($back, 1);
+			width: 66px;
+			height: 66px;
+			transition: 0.3s;
+		}
+
+		&.act {
+			.back {
+				background: rgba(88, 88, 88, 0);
+				backdrop-filter: blur(0px);
+			}
+
+			svg {
+				fill: rgba($back, 0);
+			}
+		}
+	}
+
+	.prise {
+		font-weight: 500;
+		font-size: 36px;
+		line-height: 147.7%;
+		color: #505050;
+		margin-bottom: 16px;
+	}
+
+	ul {
+		margin-bottom: 8px;
+	}
+
+	li {
+		font-size: 16px;
+		line-height: 147.7%;
+		margin-bottom: 22px;
+		padding-left: 20px;
+		position: relative;
+
+		&::before {
+			content: '';
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			border-radius: 5px;
+			background: #C4C4C4;
+			margin-right: 10px;
+			position: absolute;
+			left: 0;
+			top: 50%;
+			margin-top: -5px;
+		}
+	}
+
+	.order_service {
+		display: block;
+		margin-bottom: 63px;
+		width: 265px;
+		height: 48px;
+		border-radius: 10px;
+		background: $red;
+		line-height: 48px;
+		text-align: center;
+		font-size: 18px;
+		color: $back;
+		border: none;
+		cursor: pointer;
+		transition-duration: 0.1s;
+
+		&:hover {
+			background: $black;
+		}
+	}
+}
+
+@media (max-width: 1400px) {
+	#services_page {
+		padding-bottom: 131px;
+
+		h1 {
+			margin-bottom: -18px;
+		}
+
+		.row {
+			padding-top: 69px;
+		}
+
+		.col {
+			&:nth-child(1) {
+				width: 490px;
+			}
+
+			&:nth-child(2) {
+				width: 520px;
+			}
+		}
+
+		.order_service {
+			margin-bottom: 0px;
+		}
+	}
+}
+
+@media (max-width: 1150px) {
+	#services_page {
+		text-align: center;
+		padding-top: 26px;
+		padding-left: 17px;
+		padding-right: 17px;
+		padding-bottom: 33px;
+
+		h1 {
+			margin-bottom: -37px;
+			text-align: left;
+			font-size: 30px;
+		}
+
+		.row {
+			padding-top: 46px;
+		}
+
+		.col {
+			&:nth-child(1) {
+				width: 100%;
+				text-align: left;
+			}
+
+			&:nth-child(2) {
+				width: 100%;
+				text-align: center;
+			}
+		}
+
+		h2 {
+			font-size: 18px;
+			margin-bottom: 19px;
+		}
+
+		.text {
+			font-size: 13px;
+			margin-bottom: 30px;
+		}
+
+		.video {
+			display: inline-block;
+			height: 177px;
+			max-width: 360px;
+			margin-bottom: 26px;
+		}
+
+		.prise {
+			font-size: 18px;
+			margin-bottom: 13px;
+		}
+
+		ul {
+			margin-bottom: 25px;
+		}
+
+		li {
+			font-size: 13px;
+		}
+
+		.order_service {
+			display: inline-block;
+			margin-bottom: -7px;
+		}
+	}
+}

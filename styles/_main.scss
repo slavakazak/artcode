@@ -1,0 +1,608 @@
+#main {
+	padding-top: 260px;
+	box-sizing: border-box;
+	height: 100vh;
+	height: var(--vh, 100vh);
+	min-height: 700px;
+	max-height: 1080px;
+	position: relative;
+
+	.screens {
+		position: absolute;
+		top: 0;
+		right: 0;
+		transition-duration: 0.4s;
+	}
+
+	.screen {
+		position: absolute;
+		transform: translate(0, 0);
+		animation-duration: 0.6s;
+		animation-timing-function: ease-out;
+	}
+
+	.screen1 {
+		right: -86px;
+		top: -276px;
+		animation-name: screen1;
+	}
+
+	.screen2 {
+		right: -391px;
+		top: 25px;
+		animation-name: screen2;
+	}
+
+	.screen3 {
+		top: 475px;
+		right: 120px;
+		animation-name: screen3;
+	}
+
+	.bottom_scroll {
+		display: none;
+	}
+}
+
+//---------анимация экранов-----------------------
+$trs: 700px;
+$trsX: $trs*0.5446;
+$trsY: $trs*0.8387;
+
+@keyframes screen1 {
+	from {
+		transform: translate(-$trsX, -$trsY);
+	}
+
+	to {
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes screen2 {
+	from {
+		transform: translate($trsY, -$trsX);
+	}
+
+	to {
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes screen3 {
+	from {
+		transform: translate($trsX, $trsY);
+	}
+
+	to {
+		transform: translate(0, 0);
+	}
+}
+
+//-------------слайдер--------------
+.slick-dotted.slick-slider {
+	margin-bottom: 0px;
+}
+
+.slider {
+	position: relative;
+	z-index: 100;
+
+	.slide {
+		outline: none;
+	}
+
+	h1, h2 {
+		line-height: 1.1;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 70px;
+	}
+
+	p {
+		width: 910px;
+		margin-top: 69px;
+		margin-bottom: 60px;
+		font-weight: 500;
+		font-size: 30px;
+		line-height: 147.7%;
+	}
+}
+
+//----------кнопка заказать услугу-------------------------------
+.order {
+	display: block;
+	width: 514px;
+	height: 68px;
+	//  border: 2px solid $blue;
+	box-sizing: border-box;
+	border-radius: 15px;
+	//color: $blue;
+	font-weight: 300;
+	font-size: 30px;
+	line-height: 68px;
+	letter-spacing: 0.085em;
+	text-align: center;
+	position: relative;
+	z-index: 100;
+	cursor: pointer;
+
+	/* transition: 0.3s;
+    overflow: hidden;
+    transition-timing-function: cubic-bezier(.3,0,.7,1);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
+
+	color: $back;
+	box-shadow: 0 0 40px 40px $blue inset, 0 0 0 0 $blue;
+	-webkit-transition: all 150ms ease-in-out;
+	transition: all 150ms ease-in-out;
+}
+
+.order:hover {
+	// color: $back;
+	//border: 2px solid $blue;
+	//line-height: 64px;
+	color: $blue;
+	box-shadow: 0 0 10px 0 $blue inset, 0 0 0 2px $blue, 0 0 10px 4px $blue;
+}
+
+/*.order span{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba($blue, 0.5);
+    transition: 0.3s;
+    z-index: -1;
+    transition-timing-function: cubic-bezier(.3,0,.7,1);
+}
+.order span:nth-child(1){
+    top: -100%;
+    left: -100%;
+    border-radius: 0 0 15px 0;
+}
+.order:hover span:nth-child(1) {
+    top: 0;
+    left: 0;
+}
+.order span:nth-child(2) {
+    bottom: -100%;
+    left: -100%;
+    border-radius: 0 15px 0 0;
+}
+.order:hover span:nth-child(2) {
+    bottom: 0;
+    left: 0;
+}
+.order span:nth-child(3) {
+    top: -100%;
+    right: -100%;
+    border-radius: 0 0 0 15px;
+}
+.order:hover span:nth-child(3) {
+    top: 0;
+    right: 0;
+}
+.order span:nth-child(4) {
+    bottom: -100%;
+    right: -100%;
+    border-radius: 15px 0 0 0;
+}
+.order:hover span:nth-child(4) {
+    bottom: 0;
+    right: 0;
+}*/
+//----------------кнопки слайдера-----------------------
+$line: 166px;
+$full_line: $line*4;
+
+.dots {
+	margin-top: 180px;
+
+	.numbers {
+		margin-bottom: 9px;
+		height: 58px;
+		position: relative;
+	}
+
+	.number {
+		position: absolute;
+		top: 0;
+		left: 0;
+		font-weight: 300;
+		font-size: 40px;
+		line-height: 147.7%;
+		display: block;
+		opacity: 0;
+		transition-duration: 0.3s;
+
+		&.act {
+			opacity: 1;
+		}
+	}
+
+	.full_line {
+		width: $full_line;
+		height: 5px;
+		background: rgba(0, 0, 0, 0.4);
+	}
+
+	.line {
+		width: $line;
+		height: 5px;
+		background: $blue;
+		transition-duration: 0.3s;
+	}
+}
+
+.slick-dots {
+	position: absolute;
+	bottom: -340px;
+	height: 100px;
+	width: auto;
+	display: flex;
+
+	li {
+		display: block;
+		margin: 0;
+		padding: 0;
+		width: $line;
+		height: 100%;
+
+		button {
+			display: none;
+		}
+	}
+}
+
+@media (max-height: 1000px) {
+	#main {
+		padding-top: 220px;
+
+		.screens {
+			top: -100px;
+		}
+	}
+
+	.dots {
+		margin-top: 140px;
+	}
+
+	.slick-dots {
+		bottom: -300px;
+	}
+}
+
+@media (max-height: 920px) {
+	#main {
+		padding-top: 150px;
+
+		.screens {
+			top: -130px;
+		}
+	}
+}
+
+@media (max-height: 870px) {
+	#main {
+		padding-top: 110px;
+
+		.screens {
+			top: -170px;
+		}
+	}
+
+	.dots {
+		margin-top: 100px;
+	}
+
+	.slick-dots {
+		bottom: -260px;
+	}
+}
+
+@media (max-height: 790px) {
+	#main {
+		padding-top: 80px;
+
+		.screens {
+			top: -200px;
+		}
+	}
+
+	.dots {
+		margin-top: 80px;
+	}
+
+	.slick-dots {
+		bottom: -240px;
+	}
+}
+
+@media (max-width: 1800px) {
+	#main {
+		.screens {
+			right: -100px;
+		}
+	}
+}
+
+@media (max-width: 1650px) {
+	#main {
+		.screens {
+			right: 0;
+		}
+	}
+}
+
+@media (max-width: 1400px) {
+	#main {
+		.screens {
+			right: -250px;
+		}
+	}
+}
+
+@media (max-width: 1150px) {
+	#main {
+		padding-top: 148px;
+		padding-left: 5px;
+		padding-right: 5px;
+		// height: calc(100vh - $hhm);
+		height: calc(var(--vh, 100vh) - 55px);
+		min-height: 200px;
+		max-height: 900px;
+		text-align: center;
+		transition-duration: 0.4s;
+
+		.screens {
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background: rgba($back, 0.6);
+				left: 0;
+				top: 0;
+			}
+		}
+
+		.screen {
+			position: absolute;
+			transform: translate(0, 0);
+			animation-duration: 0.6s;
+			animation-timing-function: ease-out;
+		}
+
+		.screen1 {
+			right: 50%;
+			margin-right: -460px;
+			top: auto;
+			bottom: 715px;
+		}
+
+		.screen2 {
+			right: 50%;
+			margin-right: -740px;
+			top: auto;
+			bottom: 130px;
+		}
+
+		.screen3 {
+			top: auto;
+			bottom: -50px;
+			right: 50%;
+			margin-right: -220px;
+		}
+
+		/*.bottom_scroll{
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            .fig{
+                width: 100%;
+                height: 100%;
+                fill: $blue;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+            }
+            .arr{
+                width: 17px;
+                height: 26px;
+                fill: $back;
+                position: absolute;
+                left: 50%;
+                margin-left: -8px;
+                top: 29px;
+            }
+        }*/
+		.bottom_scroll {
+			display: block;
+			position: absolute;
+			bottom: 12px;
+			left: 50%;
+			margin-left: -31px;
+			width: 62px;
+			height: 86px;
+			background: rgba(40, 40, 40, 0.6);
+			border-radius: 31px;
+
+			.arr {
+				width: 17px;
+				height: 26px;
+				fill: $back;
+				position: absolute;
+				left: 50%;
+				margin-left: -8px;
+				top: 50%;
+				margin-top: -13px;
+			}
+		}
+	}
+
+	.slider {
+		text-align: center;
+
+		h1, h2 {
+			line-height: 1.1;
+			font-size: 30px;
+		}
+
+		p {
+			display: inline-block;
+			width: 300px;
+			margin-top: 45px;
+			margin-bottom: 40px;
+			font-size: 14px;
+		}
+	}
+
+	.order, .order:active, .order:focus, .order:hover {
+		display: inline-block;
+		width: 208px;
+		height: 44px;
+		border-radius: 15px;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 44px;
+	}
+
+	.dots {
+		display: none;
+	}
+
+	.slick-dots {
+		position: absolute;
+		bottom: -146px;
+		height: 8px;
+		width: 100%;
+		justify-content: center;
+
+		li {
+			margin: 0 4px;
+			width: 31px;
+			background: rgba(40, 40, 40, 0.6);
+			border-radius: 3px;
+			transition-duration: 0.3s;
+
+			&.slick-active {
+				background: $blue;
+			}
+		}
+	}
+}
+
+@media (max-width: 1150px) and (max-height: 700px) {
+	#main {
+		padding-top: 123px;
+	}
+
+	.slider {
+		h1, h2 {
+			font-size: 27px;
+		}
+
+		p {
+			width: 240px;
+			font-size: 12px;
+			margin-top: 33px;
+			margin-bottom: 35px;
+		}
+	}
+
+	.slick-dots {
+		bottom: -105px;
+	}
+}
+
+@media (max-width: 1150px) and (max-height: 600px) {
+	#main {
+		padding-top: 80px;
+		/*.bottom_scroll{
+            height: 70px;
+            .arr{
+                top: 30px;
+            }
+        }*/
+	}
+}
+
+@media (max-width: 1150px) and (max-height: 550px) {
+	#main {
+		padding-top: 60px;
+	}
+
+	.slider {
+		p {
+			margin-top: 33px;
+			margin-bottom: 35px;
+		}
+	}
+
+	.slick-dots {
+		bottom: -80px;
+	}
+}
+
+@media (max-width: 1150px) and (max-height: 480px) {
+	#main {
+		padding-top: 50px;
+	}
+
+	.slider {
+		p {
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+	}
+}
+
+@media (max-width: 1150px) and (max-height: 430px) {
+	#main {
+		padding-top: 80px;
+
+		.bottom_scroll {
+			display: none;
+		}
+	}
+}
+
+@media (max-width: 1150px) and (max-height: 390px) {
+	#main {
+		padding-top: 40px;
+	}
+}
+
+@media (max-width: 1150px) and (max-height: 340px) {
+	#main {
+		padding-top: 20px;
+	}
+}
+
+@media (max-width: 1150px) and (max-height: 300px) {
+	#main {
+		padding-top: 10px;
+	}
+
+	.slider {
+		p {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+	}
+
+	.slick-dots {
+		bottom: -70px;
+	}
+}

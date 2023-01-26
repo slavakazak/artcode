@@ -1,0 +1,653 @@
+#pop-up, #pop-up_mailing {
+	position: fixed;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(7px);
+	z-index: 200;
+	display: flex;
+	animation-duration: 0.3s;
+	animation-name: pop-up_back;
+
+	&.act {
+		left: 0;
+		animation-name: pop-up;
+
+		#order {
+			animation-name: form;
+		}
+
+		.thanks_mailing {
+			animation-name: thanks-form;
+		}
+	}
+}
+
+@keyframes pop-up {
+	0% {
+		left: -100%;
+		backdrop-filter: blur(0px);
+	}
+
+	1% {
+		left: 0;
+		backdrop-filter: blur(0px);
+	}
+
+	100% {
+		left: 0;
+		backdrop-filter: blur(7px);
+	}
+}
+
+@keyframes pop-up_back {
+	0% {
+		left: 0;
+		backdrop-filter: blur(7px);
+	}
+
+	99% {
+		left: 0;
+		backdrop-filter: blur(0px);
+	}
+
+	100% {
+		left: -100%;
+		backdrop-filter: blur(0px);
+	}
+}
+
+@keyframes form {
+	0% {
+		transform: translate(-1069px);
+	}
+
+	1% {
+		transform: translate(-1069px);
+	}
+
+	100% {
+		transform: translate(0);
+	}
+}
+
+@keyframes thanks-form {
+	0% {
+		transform: scale(0.1, 0.1);
+	}
+
+	1% {
+		transform: scale(0.1, 0.1);
+	}
+
+	100% {
+		transform: scale(1, 1);
+	}
+}
+
+@keyframes form_back {
+	0% {
+		transform: translate(0);
+	}
+
+	99% {
+		transform: translate(-1069px);
+	}
+
+	100% {
+		transform: translate(-1069px);
+	}
+}
+
+@keyframes thanks-form_back {
+	0% {
+		transform: scale(1, 1);
+	}
+
+	99% {
+		transform: scale(0.1, 0.1);
+	}
+
+	100% {
+		transform: scale(0.1, 0.1);
+	}
+}
+
+#order {
+	margin-left: $hw;
+	width: 1069px;
+	background: $back;
+	box-shadow: -4px -4px 17px rgba(136, 136, 136, 0.25), 4px 4px 17px rgba(193, 193, 193, 0.15);
+	animation-duration: 0.3s;
+	animation-name: form_back;
+	padding: 64px 80px 20px 104px;
+	position: relative;
+	overflow: auto;
+
+	.back {
+		position: absolute;
+		top: 28px;
+		right: 36px;
+		width: 25px;
+		height: 25px;
+		cursor: pointer;
+
+		&::after, &::before {
+			position: absolute;
+			display: block;
+			content: '';
+			width: 33px;
+			height: 3px;
+			border-radius: 1px;
+			background: #717171;
+			top: 50%;
+			margin-top: -2px;
+			left: 50%;
+			margin-left: -17px;
+			transition-duration: 0.3s;
+		}
+
+		&::after {
+			transform: rotate(45deg);
+		}
+
+		&::before {
+			transform: rotate(-45deg);
+		}
+
+		&:hover {
+			&::after, &::before {
+				background: #313131;
+			}
+		}
+	}
+
+	.title {
+		font-weight: 400;
+		font-size: 48px;
+		line-height: 93.69%;
+		margin-bottom: 29px;
+		color: $red;
+	}
+
+	.text {
+		margin-bottom: 75px;
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 23px;
+		color: rgba($red, 0.9);
+	}
+
+	.service_select {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+		margin-bottom: 37px;
+
+		&.job {
+			max-width: 629px;
+		}
+
+		svg {
+			display: none;
+		}
+	}
+
+	.service1, .service {
+		cursor: pointer;
+
+		span {
+			font-weight: 400;
+			font-size: 20px;
+			line-height: 23px;
+			color: rgba(37, 37, 37, 0.7);
+			vertical-align: middle;
+			transition-duration: 0.3s;
+		}
+
+		.radio {
+			display: inline-block;
+			margin-right: 8px;
+			width: 20px;
+			height: 20px;
+			border: 1px solid rgba(0, 0, 0, 0.7);
+			box-sizing: border-box;
+			border-radius: 8px;
+			vertical-align: middle;
+			position: relative;
+
+			&::after {
+				position: absolute;
+				content: '';
+				display: block;
+				width: 12px;
+				height: 12px;
+				background: $red;
+				border-radius: 5px;
+				top: 3px;
+				left: 3px;
+				opacity: 0;
+				transition-duration: 0.3s;
+			}
+		}
+
+		&.act {
+			span {
+				color: $red;
+			}
+
+			.radio::after {
+				opacity: 1;
+			}
+		}
+	}
+
+	#service {
+		display: none;
+	}
+
+	#name, #email, #phone, .message, .budget {
+		display: block;
+		border: none;
+		border-bottom: 1px solid #000;
+		height: 50px;
+		width: 629px;
+		box-sizing: border-box;
+		margin-bottom: 25px;
+		padding: 0;
+		font-weight: 300;
+		font-size: 24px;
+		position: relative;
+		background: transparent;
+	}
+
+	.input_label {
+		position: relative;
+		display: block;
+
+		span {
+			position: absolute;
+			left: 0;
+			top: 8px;
+			z-index: 0;
+			font-weight: 300;
+			font-size: 24px;
+			color: rgba(37, 37, 37, 0.7);
+			transition: all 150ms ease-in-out;
+		}
+
+		&.act {
+			span {
+				color: $font;
+				top: -18px;
+				font-size: 18px;
+			}
+		}
+	}
+
+	#phone {
+		margin-bottom: 37px;
+	}
+
+	.file_label {
+		display: flex;
+		margin-bottom: 94px;
+		width: 629px;
+		justify-content: space-between;
+		cursor: pointer;
+
+		span {
+			line-height: 93.69%;
+			font-weight: 300;
+			font-size: 24px;
+			color: rgba(37, 37, 37, 0.7);
+			flex-basis: 100%;
+		}
+
+		svg {
+			flex-basis: 22px;
+			height: 22px;
+		}
+	}
+
+	.file {
+		display: none;
+	}
+
+	.submit {
+		height: 48px;
+		background: $red;
+		border: none;
+		border-radius: 10px;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 48px;
+		color: $back;
+		cursor: pointer;
+		padding: 0 65px;
+		transition-duration: 0.1s;
+
+		&:hover {
+			background: $black;
+		}
+	}
+}
+
+@media (max-width: 1650px) {
+	#order {
+		margin-left: 0;
+		margin-top: $hh;
+		padding: 40px 80px 20px 104px;
+
+		.text {
+			margin-bottom: 50px;
+		}
+
+		.file_label {
+			margin-bottom: 70px;
+		}
+	}
+}
+
+@media (max-height: 900px) {
+	#order {
+		padding: 50px 80px 20px 104px;
+
+		.back {
+			top: 20px;
+		}
+
+		.title {
+			margin-bottom: 20px;
+		}
+
+		.text {
+			margin-bottom: 40px;
+		}
+
+		.service_select {
+			margin-bottom: 20px;
+		}
+
+		#name, #email, #phone, .message, .budget {
+			margin-bottom: 10px;
+		}
+
+		#phone {
+			margin-bottom: 20px;
+		}
+
+		.file_label {
+			margin-bottom: 50px;
+		}
+	}
+}
+
+@media (max-width: 1150px) {
+	#order {
+		margin-left: auto;
+		width: 100%;
+		margin-top: $hhm;
+		padding: 19px 20px 19px 15px;
+
+		.back {
+			top: 15px;
+			right: 20px;
+			width: 20px;
+			height: 20px;
+
+			&::after, &::before {
+				width: 28px;
+				height: 3px;
+				margin-left: -14px;
+			}
+		}
+
+		.title {
+			font-weight: 500;
+			font-size: 30px;
+			line-height: 147.7%;
+			margin-bottom: 19px;
+		}
+
+		.text {
+			margin-bottom: 39px;
+			font-weight: 400;
+			font-size: 13px;
+			line-height: 147.7%;
+		}
+
+		.service_select {
+			display: block;
+			width: 100%;
+			max-width: 340px;
+			border: 1px solid rgba(#000, 0.7);
+			box-sizing: border-box;
+			border-radius: 5px;
+			margin-bottom: 24px;
+			max-height: 33px;
+			overflow: hidden;
+			transition-duration: 0.3s;
+
+			svg {
+				display: block;
+				width: 12px;
+				height: 10px;
+				margin-top: 11px;
+				transition-duration: 0.3s;
+			}
+
+			.radio {
+				display: none;
+			}
+
+			&.act {
+				max-height: 280px;
+
+				svg {
+					transform: rotate(-180deg);
+				}
+			}
+		}
+
+		#service {
+			display: none;
+		}
+
+		.service, .service1 {
+			font-weight: 400;
+			font-size: 16px;
+			transition-duration: 0.3s;
+			width: 100%;
+			height: 31px;
+			line-height: 31px;
+			padding: 0 12px;
+			cursor: pointer;
+			padding-bottom: 4px;
+
+			span {
+				line-height: 31px;
+			}
+
+			&:last-child {
+				padding-bottom: 0;
+			}
+		}
+
+		.service {
+			color: rgba(37, 37, 37, 0.7);
+		}
+
+		.service1 {
+			color: rgba(0, 0, 0, 0.9);
+			display: flex;
+			justify-content: space-between;
+		}
+
+		#name, #email, #phone, .message, .budget {
+			height: 39px;
+			width: 100%;
+			max-width: 340px;
+			margin-bottom: 16px;
+			line-height: 38px;
+			font-weight: 300;
+			font-size: 18px;
+		}
+
+		.input_label {
+			span {
+				top: 7px;
+				font-size: 18px;
+			}
+
+			&.act {
+				span {
+					color: $font;
+					top: -12px;
+					font-size: 14px;
+				}
+			}
+		}
+
+		#phone {
+			margin-bottom: 27px;
+		}
+
+		.file_label {
+			margin-bottom: 53px;
+			width: 100%;
+			max-width: 340px;
+
+			span {
+				font-size: 18px;
+			}
+
+			svg {
+				flex-basis: 22px;
+				height: 22px;
+			}
+		}
+
+		.submit {
+			height: 38px;
+			border-radius: 5px;
+			line-height: 38px;
+			padding: 0 40px;
+		}
+	}
+}
+
+@media (max-height: 680px) {
+	#order {
+		.title {
+			margin-bottom: 10px;
+		}
+
+		.text {
+			margin-bottom: 30px;
+		}
+
+		.service_select {
+			margin-bottom: 20px;
+		}
+
+		#name, #email, #phone, .message, .budget {
+			margin-bottom: 15px;
+		}
+
+		#phone {
+			margin-bottom: 20px;
+		}
+
+		.file_label {
+			margin-bottom: 45px;
+		}
+	}
+}
+
+.thanks_mailing {
+	margin: auto;
+	width: 486px;
+	background: $back;
+	box-shadow: -4px -4px 17px rgba(136, 136, 136, 0.25), 4px 4px 17px rgba(193, 193, 193, 0.15);
+	border-radius: 15px;
+	animation-duration: 0.3s;
+	animation-name: thanks-form_back;
+	padding: 40px 33px 35px 33px;
+
+	.thanks {
+		font-size: 22px;
+		line-height: 93.69%;
+		margin-bottom: 30px;
+	}
+
+	.text {
+		font-weight: 300;
+		font-size: 22px;
+		line-height: 93.69%;
+		margin-bottom: 30px;
+	}
+
+	span {
+		color: $red;
+		font-size: 18px;
+		line-height: 147.7%;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+
+		svg {
+			height: 14px;
+			fill: $red;
+			transform: rotate(180deg);
+			margin-right: 13px;
+		}
+	}
+}
+
+@media (max-width: 500px) {
+
+	.thanks_mailing {
+		width: 338px;
+		padding: 30px 25px 30px 25px;
+
+		.thanks {
+			font-size: 18px;
+			margin-bottom: 25px;
+		}
+
+		.text {
+			font-size: 18px;
+			margin-bottom: 25px;
+		}
+
+		span {
+			font-size: 16px;
+
+			svg {
+				height: 12px;
+			}
+		}
+	}
+}
+
+@media (max-width: 350px) {
+	.thanks_mailing {
+		width: calc(100% - 20px);
+	}
+}
+
+@media (max-height: 470px) {
+	#pop-up {
+		padding: 5px 0;
+		overflow-y: scroll;
+	}
+}
+
+@media (max-height: 200px) {
+	#pop-up_mailing {
+		padding: 5px 0;
+		overflow-y: scroll;
+	}
+}

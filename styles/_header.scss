@@ -1,0 +1,887 @@
+#header {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: $red;
+	width: $hw;
+	height: 100vh;
+	text-align: center;
+	color: $back;
+	flex-direction: column;
+	justify-content: center;
+	animation-duration: 0.3s;
+	animation-timing-function: ease-out;
+	animation-name: header;
+	z-index: 300;
+	box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.25);
+
+	.circle {
+		display: none;
+	}
+
+	.logo, .logo:active, .logo:hover, .logo:focus {
+		color: $back;
+		display: inline-block;
+
+		svg {
+			height: 64px;
+			fill: $back;
+			margin-bottom: 20px;
+		}
+
+		span {
+			display: block;
+			font-size: 30px;
+			line-height: 1;
+		}
+	}
+
+	.burger {
+		display: none;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	}
+
+	.contacts {
+		width: 100%;
+
+		a, a:active, a:hover, a:focus {
+			display: block;
+			width: 100%;
+			line-height: 1;
+			text-align: center;
+			color: $back;
+			font-weight: 300;
+			font-size: 20px;
+			margin-bottom: 20px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+@keyframes header {
+	from {
+		left: -$hw;
+	}
+
+	to {
+		left: 0;
+	}
+}
+
+.menu {
+	margin: 22px 0;
+
+	.line {
+		height: 1px;
+		width: 125px;
+		display: inline-block;
+		background: $back;
+		margin: 66px 0 62px 0;
+
+		&.rot1 {
+			transform: rotate(90deg);
+			transition-duration: 0.3s;
+		}
+
+		&.rot2 {
+			transform: rotate(180deg);
+			transition-duration: 0.3s;
+		}
+	}
+
+	ul {
+		width: 100%;
+
+		li {
+			width: 100%;
+
+			a, a:active, a:hover, a:focus {
+				display: block;
+				width: 100%;
+				height: 61px;
+				line-height: 61px;
+				text-align: center;
+				color: $back;
+				font-weight: 300;
+				font-size: 25px;
+				position: relative;
+				z-index: 1;
+				transition-duration: 0.4s;
+
+				&::before {
+					position: absolute;
+					display: block;
+					content: '';
+					top: 0;
+					right: 0;
+					height: 100%;
+					width: 100%;
+					background: $black;
+					opacity: 0;
+					z-index: -1;
+				}
+			}
+
+			&:hover {
+				a, a:active, a:hover, a:focus {
+					&::before {
+						width: 100%;
+						background: $black;
+						opacity: 1;
+						transition-duration: 0.3s;
+					}
+				}
+			}
+
+			&.act {
+				a, a:active, a:hover, a:focus {
+					font-weight: 400;
+
+					&::before {
+						opacity: 1;
+						width: 4px;
+						background: $back;
+						transition-duration: 0.3s;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-height: 1000px) {
+	#header {
+		.logo, .logo:active, .logo:hover, .logo:focus {
+			svg {
+				height: 60px;
+				margin-bottom: 15px;
+			}
+
+			span {
+				font-size: 25px;
+			}
+		}
+
+		.contacts {
+			a, a:active, a:hover, a:focus {
+				font-size: 20px;
+				margin-bottom: 15px;
+			}
+		}
+	}
+
+	.menu {
+		margin: 10px 0;
+
+		.line {
+			width: 120px;
+			margin: 64px 0 60px 0;
+		}
+
+		ul {
+			li {
+				a, a:active, a:hover, a:focus {
+					height: 60px;
+					line-height: 60px;
+					font-size: 25px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-height: 920px) {
+	#header {
+		.logo, .logo:active, .logo:hover, .logo:focus {
+			svg {
+				height: 55px;
+				margin-bottom: 10px;
+			}
+
+			span {
+				font-size: 20px;
+			}
+		}
+
+		.contacts {
+			a, a:active, a:hover, a:focus {
+				font-size: 16px;
+				margin-bottom: 10px;
+			}
+		}
+	}
+
+	.menu {
+		margin: 10px 0;
+
+		.line {
+			width: 100px;
+			margin: 54px 0 50px 0;
+		}
+
+		ul {
+			li {
+				a, a:active, a:hover, a:focus {
+					height: 50px;
+					line-height: 50px;
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-height: 780px) {
+	#header {
+		.logo, .logo:active, .logo:hover, .logo:focus {
+			svg {
+				height: 50px;
+				margin-bottom: 5px;
+			}
+
+			span {
+				font-size: 16px;
+			}
+		}
+
+		.contacts {
+			a, a:active, a:hover, a:focus {
+				font-size: 16px;
+				margin-bottom: 10px;
+			}
+		}
+	}
+
+	.menu {
+		margin: 10px 0;
+
+		.line {
+			width: 100px;
+			margin: 5px 0 5px 0;
+
+			&.rot1 {
+				transform: rotate(0);
+			}
+
+			&.rot2 {
+				transform: rotate(0);
+			}
+		}
+
+		ul {
+			li {
+				a, a:active, a:hover, a:focus {
+					height: 40px;
+					line-height: 40px;
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-height: 500px) {
+	#header {
+		.logo, .logo:active, .logo:hover, .logo:focus {
+			svg {
+				height: 50px;
+				margin-bottom: 0;
+			}
+
+			span {
+				display: none;
+			}
+		}
+
+		.contacts {
+			display: none;
+		}
+	}
+
+	.menu {
+		margin: 5px 0;
+
+		.line {
+			width: 100px;
+			margin: 5px 0 5px 0;
+
+			&:last-child {
+				display: none;
+			}
+		}
+
+		ul {
+			li {
+				a, a:active, a:hover, a:focus {
+					height: 30px;
+					line-height: 30px;
+					font-size: 16px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1650px) {
+	#header {
+		background: $back;
+		backdrop-filter: blur(4px);
+		width: 100vw;
+		height: $hh;
+		text-align: center;
+		color: $font;
+		flex-direction: row;
+		justify-content: space-between;
+		animation-name: header_top;
+
+		.logo, .logo:active, .logo:hover, .logo:focus {
+			color: $red;
+			display: flex;
+			align-items: center;
+			margin-left: 27px;
+
+			svg {
+				height: 33px;
+				fill: $red;
+				margin-bottom: 0;
+				margin-right: 13px;
+			}
+
+			span {
+				font-size: 20px;
+			}
+		}
+
+		.contacts {
+			display: none;
+		}
+	}
+
+	.menu {
+		margin: 0 122px 0 0;
+
+		.line {
+			display: none;
+		}
+
+		ul {
+			width: auto;
+
+			li {
+				width: auto;
+				display: inline-block;
+				margin-left: 36px;
+
+				a, a:active, a:hover, a:focus {
+					height: $hh;
+					line-height: $hh;
+					color: $font;
+					font-size: 23px;
+					transition-duration: 0s;
+
+					&::before {
+						display: none;
+					}
+				}
+
+				&:hover {
+					a, a:active, a:hover, a:focus {
+						&::before {
+							display: none;
+						}
+					}
+				}
+
+				&.act {
+					a, a:active, a:hover, a:focus {
+						font-weight: 400;
+
+						&::before {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@keyframes header_top {
+	from {
+		top: -$hh;
+	}
+
+	to {
+		top: 0;
+	}
+}
+
+@media (max-width: 1400px) {
+	#header {
+		.logo, .logo:active, .logo:hover, .logo:focus {
+			margin-left: 15px;
+
+			svg {
+				height: 28px;
+				margin-right: 10px;
+			}
+
+			span {
+				font-size: 18px;
+			}
+		}
+	}
+
+	.menu {
+		margin: 0 50px 0 0;
+
+		ul {
+			li {
+				margin-left: 15px;
+
+				a, a:active, a:hover, a:focus {
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1150px) {
+	#header {
+		background: rgba($red, 1);
+		height: $hhm;
+		color: $back;
+		align-items: center;
+		transition-duration: 0.4s;
+
+		&.act {
+			background: rgba($red, 0);
+		}
+
+		.circle {
+			display: block;
+			background: rgba($red, 0.8);
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 0;
+			height: 0;
+			border-radius: calc(100vw + 100vh);
+			transition-duration: 0.4s;
+
+			&.act {
+				right: calc(-100vw - 100vh);
+				top: calc(-100vw - 100vh);
+				width: calc(200vw + 200vh);
+				height: calc(200vw + 200vh);
+			}
+		}
+
+		.logo, .logo:active, .logo:hover, .logo:focus {
+			color: $back;
+			margin-left: 14px;
+			z-index: 100;
+
+			svg {
+				height: 29px;
+				fill: $back;
+				margin-right: 11px;
+			}
+
+			span {
+				font-size: 14px;
+			}
+		}
+
+		.burger {
+			display: block;
+			position: relative;
+			width: 25px;
+			height: 21px;
+			margin-right: 20px;
+			cursor: pointer;
+
+			.line {
+				display: block;
+				position: absolute;
+				background: $back;
+				width: 25px;
+				height: 3px;
+				border-radius: 1px;
+				left: 0;
+				animation-duration: 0.4s;
+			}
+
+			.line1 {
+				top: 0;
+				transform: rotate(0);
+				animation-name: line1_r;
+			}
+
+			.line2 {
+				top: 9px;
+				height: 3px;
+				animation-name: line2_r;
+			}
+
+			.line3 {
+				bottom: 0;
+				transform: rotate(0);
+				animation-name: line3_r;
+			}
+
+			&.act {
+				.line1 {
+					top: 9px;
+					transform: rotate(45deg);
+					animation-name: line1;
+				}
+
+				.line2 {
+					top: 9px;
+					height: 0;
+					animation-name: line2;
+				}
+
+				.line3 {
+					bottom: 9px;
+					transform: rotate(-45deg);
+					animation-name: line3;
+				}
+			}
+		}
+	}
+
+	.menu {
+		margin: 0;
+		display: block;
+		position: absolute;
+		width: 100vw;
+		left: 100vw;
+		top: 125px;
+		opacity: 0;
+		overflow: visible;
+
+		ul {
+			width: 100%;
+			height: 100%;
+
+			li {
+				width: 100%;
+				margin-left: 0;
+				padding-left: 30px;
+				transition-duration: 0.4s;
+
+				a, a:active, a:hover, a:focus {
+					width: 100%;
+					height: 70px;
+					line-height: 70px;
+					color: $back;
+					font-size: 30px;
+					transition-duration: 0s;
+					text-align: left;
+				}
+
+				&.act {
+					a, a:active, a:hover, a:focus {
+						font-weight: 400;
+					}
+				}
+
+				&:nth-child(1) {
+					transition-delay: 0s;
+					transform: translateY(100vh);
+				}
+
+				&:nth-child(2) {
+					transition-delay: 0s;
+					transform: translateY(100vh);
+				}
+
+				&:nth-child(3) {
+					transition-delay: 0s;
+					transform: translateY(100vh);
+				}
+
+				&:nth-child(4) {
+					transition-delay: 0s;
+					transform: translateY(100vh);
+				}
+
+				&:nth-child(5) {
+					transition-delay: 0s;
+					transform: translateY(100vh);
+				}
+
+				&:nth-child(6) {
+					transition-delay: 0s;
+					transform: translateY(100vh);
+				}
+
+				&:nth-child(7) {
+					transition-delay: 0s;
+					transform: translateY(100vh);
+				}
+			}
+		}
+
+		&.act {
+			opacity: 1;
+			left: 0;
+
+			ul {
+				li {
+					&:nth-child(1) {
+						transition-delay: 0.3s;
+						transform: translateY(0px);
+					}
+
+					&:nth-child(2) {
+						transition-delay: 0.32s;
+						transform: translateY(0px);
+					}
+
+					&:nth-child(3) {
+						transition-delay: 0.34s;
+						transform: translateY(0px);
+					}
+
+					&:nth-child(4) {
+						transition-delay: 0.36s;
+						transform: translateY(0px);
+					}
+
+					&:nth-child(5) {
+						transition-delay: 0.38s;
+						transform: translateY(0px);
+					}
+
+					&:nth-child(6) {
+						transition-delay: 0.4s;
+						transform: translateY(0px);
+					}
+
+					&:nth-child(7) {
+						transition-delay: 0.42s;
+						transform: translateY(0px);
+					}
+				}
+			}
+		}
+	}
+}
+
+@keyframes line1 {
+	0% {
+		top: 0;
+		transform: rotate(0);
+	}
+
+	49% {
+		top: 9px;
+		transform: rotate(0);
+	}
+
+	51% {
+		top: 9px;
+		transform: rotate(0);
+	}
+
+	100% {
+		top: 9px;
+		transform: rotate(45deg);
+	}
+}
+
+@keyframes line1_r {
+	0% {
+		top: 9px;
+		transform: rotate(45deg);
+	}
+
+	49% {
+		top: 9px;
+		transform: rotate(0);
+	}
+
+	51% {
+		top: 9px;
+		transform: rotate(0);
+	}
+
+	100% {
+		top: 0;
+		transform: rotate(0);
+	}
+}
+
+@keyframes line2 {
+	0% {
+		top: 9px;
+		height: 3px;
+	}
+
+	49% {
+		top: 9px;
+		height: 3px;
+	}
+
+	51% {
+		top: 9px;
+		height: 0;
+	}
+
+	100% {
+		top: 9px;
+		height: 0;
+	}
+}
+
+@keyframes line2_r {
+	0% {
+		top: 9px;
+		height: 0;
+	}
+
+	49% {
+		top: 9px;
+		height: 0;
+	}
+
+	51% {
+		top: 9px;
+		height: 3px;
+	}
+
+	100% {
+		top: 9px;
+		height: 3px;
+	}
+}
+
+@keyframes line3 {
+	0% {
+		bottom: 0;
+		transform: rotate(0);
+	}
+
+	49% {
+		bottom: 9px;
+		transform: rotate(0);
+	}
+
+	51% {
+		bottom: 9px;
+		transform: rotate(0);
+	}
+
+	100% {
+		bottom: 9px;
+		transform: rotate(-45deg);
+	}
+}
+
+@keyframes line3_r {
+	0% {
+		bottom: 9px;
+		transform: rotate(-45deg);
+	}
+
+	49% {
+		bottom: 9px;
+		transform: rotate(0);
+	}
+
+	51% {
+		bottom: 9px;
+		transform: rotate(0);
+	}
+
+	100% {
+		bottom: 0;
+		transform: rotate(0);
+	}
+}
+
+@media (max-width: 1150px) and (max-height: 680px) {
+	#header {
+		.menu {
+			top: 100px;
+
+			ul {
+				li {
+					padding-left: 30px;
+
+					a, a:active, a:hover, a:focus {
+						height: 60px;
+						line-height: 60px;
+						font-size: 30px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1150px) and (max-height: 550px) {
+	#header {
+		.menu {
+			top: 80px;
+
+			ul {
+				li {
+					padding-left: 20px;
+
+					a, a:active, a:hover, a:focus {
+						height: 40px;
+						line-height: 40px;
+						font-size: 25px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1150px) and (max-height: 380px) {
+	#header {
+		.menu {
+			top: 50px;
+
+			ul {
+				li {
+					padding-left: 20px;
+
+					a, a:active, a:hover, a:focus {
+						height: 35px;
+						line-height: 35px;
+						font-size: 22px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1150px) and (max-height: 300px) {
+	#header {
+		.menu {
+			ul {
+				li {
+					padding-left: 20px;
+
+					a, a:active, a:hover, a:focus {
+						height: 32px;
+						line-height: 32px;
+						font-size: 22px;
+					}
+				}
+			}
+		}
+	}
+}

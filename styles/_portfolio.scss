@@ -154,6 +154,7 @@
 	.portfolio_card {
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 		width: 404px;
+		height: 229px;
 		margin-bottom: 27px;
 		position: relative;
 		overflow: hidden;
@@ -165,7 +166,6 @@
 		}
 
 		img {
-			height: 229px;
 			display: block;
 			width: 100%;
 			object-fit: cover;

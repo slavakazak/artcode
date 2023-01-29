@@ -75,11 +75,17 @@ html {
 			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 		}
 
-		input {
+		input, button {
 			font-family: $default-font, sans-serif;
 			outline: none;
 			appearance: none;
 			border-radius: 0;
+			border: none;
+			background: none;
+		}
+
+		button {
+			cursor: pointer;
 		}
 
 		&.hid {

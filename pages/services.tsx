@@ -1,3 +1,4 @@
+import { Footer } from '../components/Footer'
 import { MainLayout } from '../components/MainLayout'
 
 export default function Services() {
@@ -138,6 +139,7 @@ export default function Services() {
 					</div>
 				</div>
 			</section>
+			<Footer />
 		</MainLayout>
 	)
 }

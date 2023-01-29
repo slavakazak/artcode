@@ -37,7 +37,7 @@ export function AboutSection() {
 						</div>
 					</div>
 					<div className='col mov3'>
-						<Image src='/about.png' width={605} height={523} alt='about' />
+						<Image src='/img/about.png' fill sizes='605' alt='about' />
 					</div>
 				</div>
 			</div>

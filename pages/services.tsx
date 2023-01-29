@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import { Footer } from '../components/Footer'
 import { MainLayout } from '../components/MainLayout'
 import { ServicePageSection } from '../components/ServicePageSection'
@@ -15,7 +14,7 @@ const services = [
 			'Наличия или отсутствия CMS',
 		],
 		video: {
-			poster: '/case3.jpg',
+			poster: '/img/case3.jpg',
 			src: '/video/landing.mp4',
 		},
 	},
@@ -30,7 +29,7 @@ const services = [
 			'Наличия или отсутствия CMS',
 		],
 		video: {
-			poster: '/case10.png',
+			poster: '/img/case10.png',
 			src: '/video/severex.mp4',
 		},
 	},
@@ -45,7 +44,7 @@ const services = [
 			'Наличия или отсутствия CMS',
 		],
 		video: {
-			poster: '/case12.png',
+			poster: '/img/case12.png',
 			src: '/video/packland.mp4',
 		},
 	},
@@ -55,7 +54,7 @@ const services = [
 		id: 'design',
 		price: ['Объёма работы', 'Наличия и сложности анимации'],
 		video: {
-			poster: '/case9.jpg',
+			poster: '/img/case9.jpg',
 			src: '/video/design.mp4',
 		},
 	},

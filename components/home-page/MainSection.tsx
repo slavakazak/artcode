@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { MainSlider } from './MainSlider'
 import { smoothScrollTo } from '../../lib/smoothScrollTo'
-import { AnchorLink } from '../AnchorLink'
 
 export function MainSection() {
 	return (
@@ -14,9 +13,23 @@ export function MainSection() {
 				</MainSlider>
 			</div>
 			<div className='screens'>
-				<Image className='screen screen1' width={634} height={634} src='/screen_mobile.png' alt='screen_mobile' />
-				<Image className='screen screen2' width={1024} height={900} src='/screen.png' alt='screen' />
-				<Image className='screen screen3' width={634} height={634} src='/screen_mobile.png' alt='screen_mobile' />
+				<Image
+					className='screen screen1'
+					width={634}
+					height={634}
+					priority
+					src='/img/screen_mobile.png'
+					alt='screen_mobile'
+				/>
+				<Image className='screen screen2' width={1024} height={900} priority src='/img/screen.png' alt='screen' />
+				<Image
+					className='screen screen3'
+					width={634}
+					height={634}
+					priority
+					src='/img/screen_mobile.png'
+					alt='screen_mobile'
+				/>
 			</div>
 			<button className='bottom_scroll' onClick={() => smoothScrollTo('services')}>
 				<svg className='arr' viewBox='0 0 17 26' fill='none'>

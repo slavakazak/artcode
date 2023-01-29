@@ -15,7 +15,7 @@ export default function ErrorPage() {
 							<Link href='/'>Вернуться на главную</Link>
 						</div>
 						<div className='col'>
-							<Image src='/logo.png' width={430} height={398} alt='ARTCODE' />
+							<Image src='/img/logo.png' width={430} height={398} priority alt='ARTCODE' />
 						</div>
 					</div>
 				</div>

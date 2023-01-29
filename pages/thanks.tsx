@@ -10,9 +10,9 @@ export default function Job() {
 					<p>Мы свяжемся с Вами в ближайшее вермя</p>
 					<p className='time'>Время работы - с понедельника по субботу с 9:00 до 18:00 по Московскому времени</p>
 					<p>Если у Вас есть срочный вопрос, звоните нам по телефонам:</p>
-					<a href='tel:+375299672394'>+375 (29) 967-23-94 A1</a>
+					<Link href='tel:+375299672394'>+375 (29) 967-23-94 A1</Link>
 					<br />
-					<a href='tel:+375293630045'>+375 (29) 363-00-45 A1</a>
+					<Link href='tel:+375293630045'>+375 (29) 363-00-45 A1</Link>
 					<div className='line'></div>
 					<p className='artcode'>Ваш ARTCODE</p>
 					<Link href='/' className='back'>

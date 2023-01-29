@@ -60,7 +60,7 @@ export default function Job() {
 						))}
 					</div>
 					<div className='img_cont'>
-						<Image src='/job.png' width={1066} height={365} priority alt='job' />
+						<Image src='/img/job.png' width={1066} height={365} priority alt='job' />
 					</div>
 				</div>
 			</section>

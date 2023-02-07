@@ -6,9 +6,10 @@ interface AnchorLinkInterface {
 	children?: JSX.Element | JSX.Element[] | string
 	anchor: string
 	className?: string
+	onClick?: () => void
 }
 
-export function AnchorLink({ children, anchor, className }: AnchorLinkInterface) {
+export function AnchorLink({ children, anchor, className, onClick }: AnchorLinkInterface) {
 	const [isSectionOnPage, setIsSectionOnPage] = useState(false)
 
 	useEffect(() => {
@@ -18,7 +19,12 @@ export function AnchorLink({ children, anchor, className }: AnchorLinkInterface)
 	return (
 		<>
 			{isSectionOnPage ? (
-				<button className={className} onClick={() => smoothScrollTo(anchor)}>
+				<button
+					className={className}
+					onClick={() => {
+						smoothScrollTo(anchor)
+						onClick && onClick()
+					}}>
 					{children}
 				</button>
 			) : (

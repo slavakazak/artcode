@@ -69,6 +69,7 @@ html {
 		overflow-x: hidden;
 
 		a, a:active, a:hover, a:focus {
+			font-family: $default-font, sans-serif;
 			text-decoration: none;
 			color: $font;
 			outline: none;

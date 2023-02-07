@@ -22,9 +22,12 @@
 
 	.logo, .logo:active, .logo:hover, .logo:focus {
 		color: $back;
-		display: inline-block;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
 		svg {
+			display: block;
 			height: 64px;
 			fill: $back;
 			margin-bottom: 20px;
@@ -33,7 +36,7 @@
 		span {
 			display: block;
 			font-size: 30px;
-			line-height: 1;
+			line-height: 30px;
 		}
 	}
 
@@ -72,6 +75,26 @@
 	}
 }
 
+@keyframes rotation_90 {
+	from {
+		transform: rotate(0);
+	}
+
+	to {
+		transform: rotate(90deg);
+	}
+}
+
+@keyframes rotation_180 {
+	from {
+		transform: rotate(90deg);
+	}
+
+	to {
+		transform: rotate(180deg);
+	}
+}
+
 .menu {
 	margin: 22px 0;
 
@@ -81,15 +104,17 @@
 		display: inline-block;
 		background: $back;
 		margin: 66px 0 62px 0;
+		animation-duration: 0.3s;
+		transform: rotate(0);
 
-		&.rot1 {
+		&.rotation_90 {
 			transform: rotate(90deg);
-			transition-duration: 0.3s;
+			animation-name: rotation_90;
 		}
 
-		&.rot2 {
-			transform: rotate(180deg);
-			transition-duration: 0.3s;
+		&.rotation_180 {
+			transform: rotate(0);
+			animation-name: rotation_180;
 		}
 	}
 
@@ -340,8 +365,7 @@
 
 		.logo, .logo:active, .logo:hover, .logo:focus {
 			color: $red;
-			display: flex;
-			align-items: center;
+			flex-direction: row;
 			margin-left: 27px;
 
 			svg {

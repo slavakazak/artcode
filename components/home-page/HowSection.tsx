@@ -1,3 +1,5 @@
+import { useState, useEffect, useRef } from 'react'
+
 const how = [
 	{
 		title: 'Заявка',
@@ -26,6 +28,23 @@ const how = [
 ]
 
 export function HowSection() {
+	const [backgroundPosition, setBackgroundPosition] = useState(0)
+	const parallax = useRef<HTMLDivElement>(null)
+
+	const scrollHandler = () => {
+		const windowHeight = document.documentElement.clientHeight
+		const distanceToBottom = parallax.current ? windowHeight - parallax.current.getBoundingClientRect().top : 0
+		const maxDistance = parallax.current ? windowHeight + parallax.current.offsetHeight : 0
+		setBackgroundPosition(
+			distanceToBottom < 0 ? 0 : distanceToBottom < maxDistance ? (100 * distanceToBottom) / maxDistance : 100
+		)
+	}
+
+	useEffect(() => {
+		window.addEventListener('scroll', scrollHandler)
+		return () => window.removeEventListener('scroll', scrollHandler)
+	}, [])
+
 	return (
 		<section id='how'>
 			<div className='container'>
@@ -46,7 +65,9 @@ export function HowSection() {
 						</ul>
 					</div>
 					<div className='col'>
-						<div className='paralax'>ARTCODE</div>
+						<div ref={parallax} style={{ backgroundPositionX: backgroundPosition + '%' }} className='parallax'>
+							ARTCODE
+						</div>
 					</div>
 				</div>
 			</div>

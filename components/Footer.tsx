@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { TelegramIcon } from './TelegramIcon'
-import { ViberIcon } from './ViberIcon'
+import { TelegramIcon } from './Icons/TelegramIcon'
+import { ViberIcon } from './Icons/ViberIcon'
 
 export function Footer() {
 	return (

@@ -1,8 +1,22 @@
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { MainSlider } from './MainSlider'
 import { smoothScrollTo } from '../../lib/smoothScrollTo'
 
 export function MainSection() {
+	const [bottomScrollOpacity, setBottomScrollOpacity] = useState(1)
+
+	const scrollHandler = () => {
+		const top = window.pageYOffset
+		const windowHeight = document.documentElement.clientHeight
+		setBottomScrollOpacity(top < windowHeight ? 1 - top / windowHeight : 0)
+	}
+
+	useEffect(() => {
+		window.addEventListener('scroll', scrollHandler)
+		return () => window.removeEventListener('scroll', scrollHandler)
+	}, [])
+
 	return (
 		<main id='main'>
 			<div className='container'>
@@ -31,7 +45,10 @@ export function MainSection() {
 					alt='screen_mobile'
 				/>
 			</div>
-			<button className='bottom_scroll' onClick={() => smoothScrollTo('services')}>
+			<button
+				className='bottom_scroll'
+				style={{ opacity: bottomScrollOpacity }}
+				onClick={() => smoothScrollTo('services')}>
 				<svg className='arr' viewBox='0 0 17 26' fill='none'>
 					<path d='M7.08333 0.25L7.08333 20.3242L1.9975 15.2525L-3.71547e-07 17.25L8.5 25.75L17 17.25L15.0025 15.2525L9.91667 20.3242L9.91666 0.25L7.08333 0.25Z' />
 				</svg>

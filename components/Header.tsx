@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { Logo } from './Logo'
+import { Logo } from './Icons/Logo'
 import { AnchorLink } from './AnchorLink'
 
 export function Header() {

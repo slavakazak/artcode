@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { Logo } from './Icons/Logo'
 import { AnchorLink } from './AnchorLink'
+import { BEAT_NUMBER } from '../lib/constants'
 
 export function Header() {
 	const router = useRouter()
@@ -10,34 +11,47 @@ export function Header() {
 	const [lineRotation, setLineRotation] = useState('')
 	const [isHeaderActive, setIsHeaderActive] = useState(false)
 
-	const scrollHandler = () => {
+	const [beat, setBeat] = useState(0)
+
+	const scrollHandler = useCallback(() => {
 		const top = window.pageYOffset
+		const windowHeight = document.documentElement.clientHeight
+		let scrollHeight = Math.max(
+			document.body.scrollHeight,
+			document.documentElement.scrollHeight,
+			document.body.offsetHeight,
+			document.documentElement.offsetHeight,
+			document.body.clientHeight,
+			document.documentElement.clientHeight
+		)
 
-		const calculateScroll = (anchor: string) => {
-			const element = document.getElementById(anchor)
-			return element ? element.offsetHeight / 2 + element.getBoundingClientRect().top + top : 0
+		setBeat((top * BEAT_NUMBER) / (scrollHeight - windowHeight))
+
+		if (router.pathname === '/') {
+			const calculateScroll = (anchor: string) => {
+				const element = document.getElementById(anchor)
+				return element ? element.offsetHeight / 2 + element.getBoundingClientRect().top + top : 0
+			}
+
+			const mainScroll = calculateScroll('main')
+			const servicesScroll = calculateScroll('services')
+			const howScroll = calculateScroll('how')
+			const aboutScroll = calculateScroll('about')
+			const portfolioScroll = calculateScroll('portfolio')
+
+			if (top < mainScroll) setActiveLi('main')
+			else if (top >= mainScroll && top < servicesScroll) setActiveLi('services')
+			else if (top >= servicesScroll && top < howScroll) setActiveLi('how')
+			else if (top >= howScroll && top < aboutScroll) setActiveLi('about')
+			else if (top >= aboutScroll && top < portfolioScroll) setActiveLi('portfolio')
+			else if (top >= portfolioScroll) setActiveLi('contacts')
 		}
-
-		const mainScroll = calculateScroll('main')
-		const servicesScroll = calculateScroll('services')
-		const howScroll = calculateScroll('how')
-		const aboutScroll = calculateScroll('about')
-		const portfolioScroll = calculateScroll('portfolio')
-
-		if (top < mainScroll) setActiveLi('main')
-		else if (top >= mainScroll && top < servicesScroll) setActiveLi('services')
-		else if (top >= servicesScroll && top < howScroll) setActiveLi('how')
-		else if (top >= howScroll && top < aboutScroll) setActiveLi('about')
-		else if (top >= aboutScroll && top < portfolioScroll) setActiveLi('portfolio')
-		else if (top >= portfolioScroll) setActiveLi('contacts')
-	}
+	}, [router.pathname])
 
 	useEffect(() => {
+		scrollHandler()
+		window.addEventListener('scroll', scrollHandler)
 		switch (router.pathname) {
-			case '/':
-				scrollHandler()
-				window.addEventListener('scroll', scrollHandler)
-				break
 			case '/services':
 				setActiveLi('services')
 				break
@@ -49,7 +63,7 @@ export function Header() {
 				break
 		}
 		return () => window.removeEventListener('scroll', scrollHandler)
-	}, [router.pathname])
+	}, [router.pathname, scrollHandler])
 
 	const clickHandler = () => {
 		setLineRotation('rotation_180')
@@ -80,7 +94,7 @@ export function Header() {
 		<header id='header' className={isHeaderActive ? 'act' : ''}>
 			<div className={`circle${isHeaderActive ? ' act' : ''}`}></div>
 			<AnchorLink className='logo' anchor='main' onClick={clickHandler}>
-				<Logo />
+				<Logo pastBeat={beat} />
 				<span>ARTCODE</span>
 			</AnchorLink>
 			<nav className={`menu${isHeaderActive ? ' act' : ''}`}>

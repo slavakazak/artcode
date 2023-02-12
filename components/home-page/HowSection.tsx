@@ -53,7 +53,7 @@ export function HowSection() {
 						<h2>Как мы работаем?</h2>
 						<ul>
 							{how.map((item, i) => (
-								<li key={i} className='mov2 m_mov2'>
+								<li key={i} data-animate='fadeInLeft' data-mobile-animate='fadeInLeft'>
 									<span className='num'>{(i < 9 ? '0' : '') + (i + 1)}</span>
 									<div className='line'></div>
 									<div className='text'>

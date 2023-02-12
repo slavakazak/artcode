@@ -4,7 +4,6 @@ import { MainLayout } from '../components/MainLayout'
 
 const job = [
 	{
-		className: 'mov2 m_mov2',
 		title: 'UI/UX - дизайнер',
 		text: () => (
 			<>
@@ -17,7 +16,6 @@ const job = [
 		),
 	},
 	{
-		className: 'mov3 m_mov3',
 		title: 'веб-программист',
 		text: () => (
 			<>
@@ -50,7 +48,11 @@ export default function Job() {
 					</p>
 					<div className='row'>
 						{job.map((item, i) => (
-							<div key={i} className={'card ' + item.className}>
+							<div
+								key={i}
+								className='card'
+								data-animate={i % 2 ? 'fadeInRight' : 'fadeInLeft'}
+								data-mobile-animate='fadeInLeft'>
 								<h2>Требуется {item.title}</h2>
 								<p>{item.text()}</p>
 								<div className='respond' data-message={item.title}>

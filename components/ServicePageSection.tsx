@@ -25,7 +25,7 @@ export function ServicePageSection({ id, title, text, price, video }: ServicePag
 					)}
 				</div>
 				{video && (
-					<div className='col mov3 m_mov2'>
+					<div className='col' data-animate='fadeInRight' data-mobile-animate='fadeInLeft'>
 						<div className='video'>
 							<video loop poster={video.poster}>
 								<source src={video.src} type='video/mp4' />

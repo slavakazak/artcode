@@ -150,28 +150,35 @@ h2 {
 }
 
 //----------анимация-----------------------
-.mov, .mov2, .mov3, .m_mov, .m_mov2, .m_mov3 {
+[data-animate], [data-mobile-animate] {
 	animation-duration: 0.75s;
 	animation-fill-mode: backwards;
 
-	&.delay-1 {
-		animation-delay: 0.2s;
+	&.fadeInUp {
+		animation-name: fadeInUp;
+		opacity: 1;
 	}
 
-	&.delay-2 {
-		animation-delay: 0.4s;
+	&.fadeInLeft {
+		animation-name: fadeInLeft;
+		opacity: 1;
 	}
 
-	&.delay-3 {
-		animation-delay: 0.6s;
+	&.fadeInRight {
+		animation-name: fadeInRight;
+		opacity: 1;
+	}
+}
+
+@media (min-width: 1151px) {
+	[data-animate] {
+		opacity: 0;
 	}
 }
 
 @media (max-width: 1150px) {
-	.mov, .mov2, .mov3, .m_mov, .m_mov2, .m_mov3 {
-		&.delay-1, &.delay-2, &.delay-3 {
-			animation-delay: 0s;
-		}
+	[data-mobile-animate] {
+		opacity: 0;
 	}
 }
 
@@ -187,10 +194,6 @@ h2 {
 	}
 }
 
-.fadeInUp {
-	animation-name: fadeInUp;
-}
-
 @keyframes fadeInLeft {
 	from {
 		opacity: 0;
@@ -203,10 +206,6 @@ h2 {
 	}
 }
 
-.fadeInLeft {
-	animation-name: fadeInLeft;
-}
-
 @keyframes fadeInRight {
 	from {
 		opacity: 0;
@@ -217,10 +216,6 @@ h2 {
 		opacity: 1;
 		transform: translate3d(0, 0, 0);
 	}
-}
-
-.fadeInRight {
-	animation-name: fadeInRight;
 }
 
 //---------------прелодер-----------------------

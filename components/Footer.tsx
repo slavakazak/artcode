@@ -7,17 +7,17 @@ export function Footer() {
 		<footer id='footer'>
 			<div className='subscription'>
 				<div className='container'>
-					<form method='post' id='subscription' className='m_mov2' action=''>
+					<form method='post' id='subscription' data-mobile-animate='fadeInLeft' action=''>
 						<p className='title'>
 							Присоединяйся
 							<br />к нашей семье по почте
 						</p>
-						<label className='mov2'>
+						<label data-animate='fadeInLeft'>
 							<input className='email' type='email' name='email' required placeholder='Email address' />
 						</label>
-						<input id='btn' className='submit mov2' type='button' value='Подписаться' />
+						<input id='btn' className='submit' data-animate='fadeInLeft' type='button' value='Подписаться' />
 					</form>
-					<form method='post' id='form' action='telegram_contact.php' className='mov3'>
+					<form method='post' id='form' action='telegram_contact.php' data-animate='fadeInRight'>
 						<p className='title'>Связаться</p>
 						<div className='row'>
 							<label>

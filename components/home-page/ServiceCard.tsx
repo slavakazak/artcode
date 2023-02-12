@@ -2,15 +2,15 @@ import Link from 'next/link'
 import React from 'react'
 
 interface ServiceCardInterface {
-	className?: string
 	title: string
 	text: string
 	anchor?: string
+	index?: number
 }
 
-export function ServiceCard({ className, title, text, anchor = '' }: ServiceCardInterface) {
+export function ServiceCard({ title, text, anchor = '', index = 0 }: ServiceCardInterface) {
 	return (
-		<div className={'service_card ' + className}>
+		<div className='service_card' data-animate='fadeInUp' data-mobile-animate='fadeInLeft' data-delay={index}>
 			<h3>{title}</h3>
 			<div className='line'></div>
 			<p className='description'>{text}</p>

@@ -6,7 +6,7 @@ export function AboutSection() {
 			<div className='container'>
 				<h2>О компании</h2>
 				<div className='row'>
-					<div className='col mov2'>
+					<div className='col' data-animate='fadeInLeft'>
 						<p className='text'>
 							Мы молодая веб студия, объединившая разработчиков и дизайнеров с большим опытом работы.
 							<br />
@@ -36,7 +36,7 @@ export function AboutSection() {
 							</svg>
 						</div>
 					</div>
-					<div className='col mov3'>
+					<div className='col' data-animate='fadeInRight'>
 						<Image src='/img/about.png' fill sizes='605' alt='about' />
 					</div>
 				</div>

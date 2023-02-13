@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import Image from 'next/image'
 
 export function AboutSection() {
+	const [isTextVisible, setIsTextVisible] = useState(false)
 	return (
 		<section id='about'>
 			<div className='container'>
@@ -17,7 +19,7 @@ export function AboutSection() {
 							<br />
 							Наша веб-студия предоставляет бесплатную техническую поддержку проектов в течение двух месяцев.
 						</p>
-						<p className='text text_close'>
+						<p className={'text text_close' + (isTextVisible ? ' act' : '')}>
 							<br />
 							При работе мы придерживаемся следующих принципов:
 							<br />
@@ -26,7 +28,7 @@ export function AboutSection() {
 							- качественная оптимизация работы сайта;
 							<br />- своевременная обратная связь.
 						</p>
-						<div className='read_more'>
+						<div className={'read_more' + (isTextVisible ? ' hid' : '')} onClick={() => setIsTextVisible(true)}>
 							Читать далее
 							<svg width='34' height='8' viewBox='0 0 34 8' fill='none'>
 								<path

@@ -1,4 +1,4 @@
-import React from 'react'
+import { useRef, useState } from 'react'
 
 interface ServicePageSectionInterface {
 	id?: string
@@ -9,6 +9,14 @@ interface ServicePageSectionInterface {
 }
 
 export function ServicePageSection({ id, title, text, price, video }: ServicePageSectionInterface) {
+	const videoRef = useRef<HTMLVideoElement>(null)
+	const [isVideoPlayed, setIsVideoPlayed] = useState(false)
+	function clickHandler() {
+		setIsVideoPlayed(previous => !previous)
+		if (videoRef.current) {
+			isVideoPlayed ? videoRef.current.pause() : videoRef.current.play()
+		}
+	}
 	return (
 		<>
 			<div className='row' id={id}>
@@ -26,8 +34,8 @@ export function ServicePageSection({ id, title, text, price, video }: ServicePag
 				</div>
 				{video && (
 					<div className='col' data-animate='fadeInRight' data-mobile-animate='fadeInLeft'>
-						<div className='video'>
-							<video loop poster={video.poster}>
+						<div className={'video' + (isVideoPlayed ? ' act' : '')} onClick={clickHandler}>
+							<video ref={videoRef} loop poster={video.poster}>
 								<source src={video.src} type='video/mp4' />
 							</video>
 							<div className='back'>

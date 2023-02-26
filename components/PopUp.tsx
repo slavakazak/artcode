@@ -5,6 +5,7 @@ import { ServicesInterface, JobsInterface, FieldsInterface, SMALL_BREAKPOINT } f
 import { usePopUp } from './PopUpContext'
 import { useRouter } from 'next/router'
 import { sendToTelegram } from '../lib/sendToTelegram'
+import { Captcha } from './Captcha'
 
 interface FieldsValueInterface {
 	[field: string]: string
@@ -134,15 +135,7 @@ export function PopUp({ title, text, radioItems, fields, filePlaceholder, submit
 					<Clip />
 					<input name='file' className='file' type='file' onChange={fileInputHandler} />
 				</label>
-
-				<input
-					type='checkbox'
-					id='checkbox'
-					name='checkbox'
-					checked={checkbox}
-					onClick={() => setCheckbox(previous => !previous)}
-				/>
-
+				<Captcha checkbox={checkbox} setCheckbox={setCheckbox} />
 				<input className='submit' type='submit' value={submitText} />
 			</form>
 		</div>

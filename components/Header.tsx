@@ -5,9 +5,11 @@ import { Logo } from './Icons/Logo'
 import { AnchorLink } from './AnchorLink'
 import { BEAT_NUMBER } from '../lib/constants'
 import { usePopUp } from './PopUpContext'
+import { usePopUpMailing } from './PopUpMailingContext'
 
 export function Header() {
 	const { isPopUpVisible, closePopUp } = usePopUp()
+	const { isPopUpMailingVisible, setIsPopUpMailingVisible } = usePopUpMailing()
 	const router = useRouter()
 	const [activeLi, setActiveLi] = useState('')
 	const [lineBlocked, setLineBlocked] = useState(true)
@@ -86,14 +88,14 @@ export function Header() {
 	const burgerClickHandler = () => setIsHeaderActive(prev => !prev)
 
 	useEffect(() => {
-		if (isHeaderActive || isPopUpVisible) {
+		if (isHeaderActive || isPopUpVisible || isPopUpMailingVisible) {
 			document.body.classList.add('hid')
 			document.querySelector('#wrap')?.classList.add('act')
 		} else {
 			document.body.classList.remove('hid')
 			document.querySelector('#wrap')?.classList.remove('act')
 		}
-	}, [isHeaderActive, isPopUpVisible])
+	}, [isHeaderActive, isPopUpVisible, isPopUpMailingVisible])
 
 	const liProps = (title: string) => ({
 		className: activeLi === title ? 'act' : '',
@@ -103,7 +105,13 @@ export function Header() {
 	})
 
 	return (
-		<header id='header' className={isHeaderActive ? 'act' : ''} onClick={closePopUp}>
+		<header
+			id='header'
+			className={isHeaderActive ? 'act' : ''}
+			onClick={() => {
+				closePopUp()
+				setIsPopUpMailingVisible(false)
+			}}>
 			<div className={`circle${isHeaderActive ? ' act' : ''}`}></div>
 			<AnchorLink className='logo' anchor='main' onClick={clickHandler}>
 				<Logo pastBeat={beat} />

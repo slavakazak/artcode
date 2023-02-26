@@ -2,7 +2,9 @@ import { useEffect, useCallback } from 'react'
 import Head from 'next/head'
 import { Header } from './Header'
 import { PopUp } from './PopUp'
+import { PopUpMailing } from './PopUpMailing'
 import { PopUpProvider } from './PopUpContext'
+import { PopUpMailingProvider } from './PopUpMailingContext'
 import { services, jobs, ServicesFields, JobsFields, SMALL_BREAKPOINT } from '../lib/constants'
 import { useRouter } from 'next/router'
 
@@ -58,30 +60,33 @@ export function MainLayout({
 				<meta name='keywords' content={keywords} />
 			</Head>
 			<PopUpProvider>
-				<Header />
-				{(router.pathname === '/' || router.pathname === '/services') && (
-					<PopUp
-						title='Заказ услуги'
-						text='Давайте немного познакомимся и узнаем о Вашем проекте и Ваши контакты, затем мы свяжемся и обсудим все более детально.'
-						radioItems={services}
-						fields={ServicesFields}
-						filePlaceholder='Может у вас уже есть ТЗ?'
-						submitText='Заказать услугу'
-						formTitle='Оформление услуги'
-					/>
-				)}
-				{router.pathname === '/job' && (
-					<PopUp
-						title='Связаться по поводу работы'
-						text='Давайте немного познакомимся и узнаем о Ваc, затем мы свяжемся и обсудим все более детально.'
-						radioItems={jobs}
-						fields={JobsFields}
-						filePlaceholder='Ваше резюме'
-						submitText='Отправить'
-						formTitle='Вакансии'
-					/>
-				)}
-				<div id='wrap'>{children}</div>
+				<PopUpMailingProvider>
+					<Header />
+					<PopUpMailing />
+					{(router.pathname === '/' || router.pathname === '/services') && (
+						<PopUp
+							title='Заказ услуги'
+							text='Давайте немного познакомимся и узнаем о Вашем проекте и Ваши контакты, затем мы свяжемся и обсудим все более детально.'
+							radioItems={services}
+							fields={ServicesFields}
+							filePlaceholder='Может у вас уже есть ТЗ?'
+							submitText='Заказать услугу'
+							formTitle='Оформление услуги'
+						/>
+					)}
+					{router.pathname === '/job' && (
+						<PopUp
+							title='Связаться по поводу работы'
+							text='Давайте немного познакомимся и узнаем о Ваc, затем мы свяжемся и обсудим все более детально.'
+							radioItems={jobs}
+							fields={JobsFields}
+							filePlaceholder='Ваше резюме'
+							submitText='Отправить'
+							formTitle='Вакансии'
+						/>
+					)}
+					<div id='wrap'>{children}</div>
+				</PopUpMailingProvider>
 			</PopUpProvider>
 		</>
 	)

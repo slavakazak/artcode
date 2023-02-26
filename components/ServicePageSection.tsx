@@ -1,14 +1,16 @@
 import { useRef, useState } from 'react'
+import { usePopUp } from './PopUpContext'
 
 interface ServicePageSectionInterface {
-	id?: string
+	anchor?: string
 	title?: string
 	text?: string
 	price?: string[]
 	video?: { poster: string; src: string }
 }
 
-export function ServicePageSection({ id, title, text, price, video }: ServicePageSectionInterface) {
+export function ServicePageSection({ anchor, title, text, price, video }: ServicePageSectionInterface) {
+	const { openPopUp } = usePopUp()
 	const videoRef = useRef<HTMLVideoElement>(null)
 	const [isVideoPlayed, setIsVideoPlayed] = useState(false)
 	function clickHandler() {
@@ -19,7 +21,7 @@ export function ServicePageSection({ id, title, text, price, video }: ServicePag
 	}
 	return (
 		<>
-			<div className='row' id={id}>
+			<div className='row' id={anchor}>
 				<div className='col'>
 					<h2>{title}</h2>
 					<p className='text'>{text}</p>
@@ -47,7 +49,7 @@ export function ServicePageSection({ id, title, text, price, video }: ServicePag
 					</div>
 				)}
 			</div>
-			<div className='order_service' data-message={title}>
+			<div className='order_service' onClick={() => openPopUp(title)}>
 				Заказать услугу
 			</div>
 		</>

@@ -4,14 +4,13 @@
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.4);
-	backdrop-filter: blur(7px);
 	z-index: 200;
 	display: flex;
 	animation-duration: 0.3s;
-	animation-name: pop-up_back;
 
 	&.act {
 		left: 0;
+		backdrop-filter: blur(7px);
 		animation-name: pop-up;
 
 		#order {
@@ -21,6 +20,11 @@
 		.thanks_mailing {
 			animation-name: thanks-form;
 		}
+	}
+
+	&.hid {
+		left: -100%;
+		animation-name: pop-up_back;
 	}
 }
 
@@ -179,7 +183,7 @@
 		color: rgba($red, 0.9);
 	}
 
-	.service_select {
+	.radio_select {
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
@@ -194,7 +198,7 @@
 		}
 	}
 
-	.service1, .service {
+	.first_radio_item, .radio_item {
 		cursor: pointer;
 
 		span {
@@ -243,11 +247,7 @@
 		}
 	}
 
-	#service {
-		display: none;
-	}
-
-	#name, #email, #phone, .message, .budget {
+	.input {
 		display: block;
 		border: none;
 		border-bottom: 1px solid #000;
@@ -260,11 +260,17 @@
 		font-size: 24px;
 		position: relative;
 		background: transparent;
+		z-index: 2;
+	}
+
+	#checkbox {
+		display: none;
 	}
 
 	.input_label {
 		position: relative;
 		display: block;
+		z-index: 1;
 
 		span {
 			position: absolute;
@@ -275,6 +281,7 @@
 			font-size: 24px;
 			color: rgba(37, 37, 37, 0.7);
 			transition: all 150ms ease-in-out;
+			z-index: 3;
 		}
 
 		&.act {
@@ -286,11 +293,8 @@
 		}
 	}
 
-	#phone {
-		margin-bottom: 37px;
-	}
-
 	.file_label {
+		margin-top: 37px;
 		display: flex;
 		margin-bottom: 94px;
 		width: 629px;
@@ -366,19 +370,16 @@
 			margin-bottom: 40px;
 		}
 
-		.service_select {
+		.radio_select {
 			margin-bottom: 20px;
 		}
 
-		#name, #email, #phone, .message, .budget {
+		.input {
 			margin-bottom: 10px;
 		}
 
-		#phone {
-			margin-bottom: 20px;
-		}
-
 		.file_label {
+			margin-top: 20px;
 			margin-bottom: 50px;
 		}
 	}
@@ -418,7 +419,7 @@
 			line-height: 147.7%;
 		}
 
-		.service_select {
+		.radio_select {
 			display: block;
 			width: 100%;
 			max-width: 340px;
@@ -451,11 +452,7 @@
 			}
 		}
 
-		#service {
-			display: none;
-		}
-
-		.service, .service1 {
+		.radio_item, .first_radio_item {
 			font-weight: 400;
 			font-size: 16px;
 			transition-duration: 0.3s;
@@ -475,17 +472,17 @@
 			}
 		}
 
-		.service {
+		.radio_item {
 			color: rgba(37, 37, 37, 0.7);
 		}
 
-		.service1 {
+		.first_radio_item {
 			color: rgba(0, 0, 0, 0.9);
 			display: flex;
 			justify-content: space-between;
 		}
 
-		#name, #email, #phone, .message, .budget {
+		.input {
 			height: 39px;
 			width: 100%;
 			max-width: 340px;
@@ -510,11 +507,8 @@
 			}
 		}
 
-		#phone {
-			margin-bottom: 27px;
-		}
-
 		.file_label {
+			margin-top: 27px;
 			margin-bottom: 53px;
 			width: 100%;
 			max-width: 340px;
@@ -548,19 +542,16 @@
 			margin-bottom: 30px;
 		}
 
-		.service_select {
+		.radio_select {
 			margin-bottom: 20px;
 		}
 
-		#name, #email, #phone, .message, .budget {
+		.input {
 			margin-bottom: 15px;
 		}
 
-		#phone {
-			margin-bottom: 20px;
-		}
-
 		.file_label {
+			margin-top: 20px;
 			margin-bottom: 45px;
 		}
 	}

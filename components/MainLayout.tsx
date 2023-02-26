@@ -1,6 +1,10 @@
 import { useEffect, useCallback } from 'react'
 import Head from 'next/head'
 import { Header } from './Header'
+import { PopUp } from './PopUp'
+import { PopUpProvider } from './PopUpContext'
+import { services, jobs, ServicesFields, JobsFields, SMALL_BREAKPOINT } from '../lib/constants'
+import { useRouter } from 'next/router'
 
 interface MainLayoutInterface {
 	children?: JSX.Element | JSX.Element[]
@@ -15,8 +19,10 @@ export function MainLayout({
 	description = 'Разработка качественных и продающих сайтов по доступным ценам. Стильный и современный дизайн. Учитываем все пожелания клиентов',
 	keywords = 'artcode, арткод, веб студия, веб студия минск, разработка сайтов, сайт, дизайн, landing page, лендинг, сайт-визитка, многостраничный сайт',
 }: MainLayoutInterface) {
+	const router = useRouter()
+
 	const scrollHandler = useCallback(() => {
-		if (document.documentElement.clientWidth > 1150) {
+		if (document.documentElement.clientWidth > SMALL_BREAKPOINT) {
 			document.querySelectorAll('[data-animate]').forEach(element => {
 				if (element.getBoundingClientRect().top < document.documentElement.clientHeight) {
 					element.classList.add((element as HTMLElement).dataset.animate || '')
@@ -41,6 +47,7 @@ export function MainLayout({
 		window.addEventListener('scroll', scrollHandler)
 		return () => window.removeEventListener('scroll', scrollHandler)
 	}, [scrollHandler])
+
 	return (
 		<>
 			<Head>
@@ -50,8 +57,32 @@ export function MainLayout({
 				<meta name='description' content={description} />
 				<meta name='keywords' content={keywords} />
 			</Head>
-			<Header />
-			<div id='wrap'>{children}</div>
+			<PopUpProvider>
+				<Header />
+				{(router.pathname === '/' || router.pathname === '/services') && (
+					<PopUp
+						title='Заказ услуги'
+						text='Давайте немного познакомимся и узнаем о Вашем проекте и Ваши контакты, затем мы свяжемся и обсудим все более детально.'
+						radioItems={services}
+						fields={ServicesFields}
+						filePlaceholder='Может у вас уже есть ТЗ?'
+						submitText='Заказать услугу'
+						formTitle='Оформление услуги'
+					/>
+				)}
+				{router.pathname === '/job' && (
+					<PopUp
+						title='Связаться по поводу работы'
+						text='Давайте немного познакомимся и узнаем о Ваc, затем мы свяжемся и обсудим все более детально.'
+						radioItems={jobs}
+						fields={JobsFields}
+						filePlaceholder='Ваше резюме'
+						submitText='Отправить'
+						formTitle='Вакансии'
+					/>
+				)}
+				<div id='wrap'>{children}</div>
+			</PopUpProvider>
 		</>
 	)
 }

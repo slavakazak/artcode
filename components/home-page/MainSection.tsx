@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { MainSlider } from './MainSlider'
 import { smoothScrollTo } from '../../lib/smoothScrollTo'
+import { usePopUp } from '../PopUpContext'
 
 export function MainSection() {
+	const { openPopUp } = usePopUp()
+
 	const [bottomScrollOpacity, setBottomScrollOpacity] = useState(1)
 
 	const scrollHandler = () => {
@@ -21,7 +24,7 @@ export function MainSection() {
 		<main id='main'>
 			<div className='container'>
 				<MainSlider>
-					<div className='order' data-message='Landing page'>
+					<div className='order' onClick={() => openPopUp()}>
 						Заказать услугу
 					</div>
 				</MainSlider>

@@ -4,10 +4,13 @@ import Link from 'next/link'
 import { Logo } from './Icons/Logo'
 import { AnchorLink } from './AnchorLink'
 import { BEAT_NUMBER } from '../lib/constants'
+import { usePopUp } from './PopUpContext'
 
 export function Header() {
+	const { isPopUpVisible, closePopUp } = usePopUp()
 	const router = useRouter()
 	const [activeLi, setActiveLi] = useState('')
+	const [lineBlocked, setLineBlocked] = useState(true)
 	const [lineRotation, setLineRotation] = useState('')
 	const [isHeaderActive, setIsHeaderActive] = useState(false)
 
@@ -49,9 +52,10 @@ export function Header() {
 	}, [router.pathname])
 
 	useEffect(() => {
-		scrollHandler()
-		window.addEventListener('scroll', scrollHandler)
 		switch (router.pathname) {
+			case '/':
+				setActiveLi('main')
+				break
 			case '/services':
 				setActiveLi('services')
 				break
@@ -62,26 +66,34 @@ export function Header() {
 				setActiveLi('job')
 				break
 		}
+		scrollHandler()
+		window.addEventListener('scroll', scrollHandler)
+		setLineBlocked(false)
 		return () => window.removeEventListener('scroll', scrollHandler)
 	}, [router.pathname, scrollHandler])
 
 	const clickHandler = () => {
-		setLineRotation('rotation_180')
+		if (!lineBlocked) setLineRotation('rotation_180')
 		setIsHeaderActive(false)
-		document.querySelector('#wrap')?.classList.remove('act')
-		document.body.classList.remove('hid')
 	}
 
 	const mouseEnterHandler = (isActive: boolean) => {
-		if (!isActive) return () => setLineRotation('rotation_90')
+		if (!isActive && !lineBlocked) return () => setLineRotation('rotation_90')
 	}
-	const mouseLeaveHandler = () => setLineRotation('rotation_180')
+	const mouseLeaveHandler = () =>
+		lineBlocked ? undefined : setLineRotation(previous => (previous ? 'rotation_180' : ''))
 
-	const burgerClickHandler = () => {
-		setIsHeaderActive(prev => !prev)
-		document.querySelector('#wrap')?.classList.toggle('act')
-		document.body.classList.toggle('hid')
-	}
+	const burgerClickHandler = () => setIsHeaderActive(prev => !prev)
+
+	useEffect(() => {
+		if (isHeaderActive || isPopUpVisible) {
+			document.body.classList.add('hid')
+			document.querySelector('#wrap')?.classList.add('act')
+		} else {
+			document.body.classList.remove('hid')
+			document.querySelector('#wrap')?.classList.remove('act')
+		}
+	}, [isHeaderActive, isPopUpVisible])
 
 	const liProps = (title: string) => ({
 		className: activeLi === title ? 'act' : '',
@@ -91,7 +103,7 @@ export function Header() {
 	})
 
 	return (
-		<header id='header' className={isHeaderActive ? 'act' : ''}>
+		<header id='header' className={isHeaderActive ? 'act' : ''} onClick={closePopUp}>
 			<div className={`circle${isHeaderActive ? ' act' : ''}`}></div>
 			<AnchorLink className='logo' anchor='main' onClick={clickHandler}>
 				<Logo pastBeat={beat} />

@@ -12,7 +12,7 @@ export function SubscriptionForm() {
 	async function submitHandler(event: FormEvent) {
 		event.preventDefault()
 
-		let text = `<b>Подписка</b>%0A<b>email:</b> ${email.value}`
+		let text = `<b>Подписка</b>%0A<b>email:</b> ${email.props.value}`
 
 		if (!checkbox)
 			await sendToTelegram(text, () => {
@@ -28,7 +28,7 @@ export function SubscriptionForm() {
 				<br />к нашей семье по почте
 			</p>
 			<label data-animate='fadeInLeft'>
-				<input className='email' type='email' name='email' required placeholder='Email address' {...email} />
+				<input className='email' type='email' name='email' required placeholder='Email address' {...email.props} />
 			</label>
 			<Captcha checkbox={checkbox} setCheckbox={setCheckbox} />
 			<input id='btn' className='submit' data-animate='fadeInLeft' type='submit' value='Подписаться' />

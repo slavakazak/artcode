@@ -7,10 +7,10 @@ export function PopUpMailing() {
 
 	useEffect(() => {
 		if (isPopUpMailingVisible) {
-			setPopUpClassName('act')
+			setPopUpClassName('active')
 		} else {
 			setPopUpClassName(previous => {
-				if (previous === 'act') return 'hid'
+				if (previous === 'active') return 'hidden'
 				return ''
 			})
 		}

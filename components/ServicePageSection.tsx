@@ -36,7 +36,7 @@ export function ServicePageSection({ anchor, title, text, price, video }: Servic
 				</div>
 				{video && (
 					<div className='col' data-animate='fadeInRight' data-mobile-animate='fadeInLeft'>
-						<div className={'video' + (isVideoPlayed ? ' act' : '')} onClick={clickHandler}>
+						<div className={'video' + (isVideoPlayed ? ' active' : '')} onClick={clickHandler}>
 							<video ref={videoRef} loop poster={video.poster}>
 								<source src={video.src} type='video/mp4' />
 							</video>

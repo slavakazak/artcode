@@ -13,8 +13,8 @@ export function ContactForm() {
 
 	async function submitHandler(event: FormEvent) {
 		event.preventDefault()
-		let text = `<b>Контактная форма</b>%0A<b>name:</b> ${name.value}%0A<b>email:</b> ${email.value}`
-		if (message.value) text += `%0A<b>message:</b> ${message.value}`
+		let text = `<b>Контактная форма</b>%0A<b>name:</b> ${name.props.value}%0A<b>email:</b> ${email.props.value}`
+		if (message.props.value) text += `%0A<b>message:</b> ${message.props.value}`
 		if (!checkbox) await sendToTelegram(text, () => router.push('thanks'))
 	}
 
@@ -24,16 +24,16 @@ export function ContactForm() {
 			<div className='row'>
 				<label>
 					<span>Имя</span>
-					<input type='text' name='name' required placeholder='Введите свое имя' {...name} />
+					<input type='text' name='name' required placeholder='Введите свое имя' {...name.props} />
 				</label>
 				<label>
 					<span>Email</span>
-					<input type='email' name='email' required placeholder='Введите свой Email' {...email} />
+					<input type='email' name='email' required placeholder='Введите свой Email' {...email.props} />
 				</label>
 			</div>
 			<label>
 				<span>Сообщение</span>
-				<input type='text' name='message' placeholder='Ваше сообщение' {...message} />
+				<input type='text' name='message' placeholder='Ваше сообщение' {...message.props} />
 			</label>
 			<Captcha checkbox={checkbox} setCheckbox={setCheckbox} />
 			<input className='submit' type='submit' value='Отправить' />

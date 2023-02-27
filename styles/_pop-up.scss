@@ -9,7 +9,7 @@
 	display: flex;
 	animation-duration: 0.3s;
 
-	&.act {
+	&.active {
 		left: 0;
 		backdrop-filter: blur(7px);
 		animation-name: pop-up;
@@ -23,7 +23,7 @@
 		}
 	}
 
-	&.hid {
+	&.hidden {
 		left: -100%;
 		animation-name: pop-up_back;
 	}
@@ -187,11 +187,15 @@
 	.radio_select {
 		display: flex;
 		width: 100%;
-		justify-content: space-between;
+		justify-content: flex-start;
 		margin-bottom: 37px;
 
-		&.job {
-			max-width: 629px;
+		div {
+			margin-right: 70px;
+
+			&:last-child {
+				margin-right: 0;
+			}
 		}
 
 		svg {
@@ -237,7 +241,7 @@
 			}
 		}
 
-		&.act {
+		&.active {
 			span {
 				color: $red;
 			}
@@ -281,7 +285,7 @@
 			z-index: 3;
 		}
 
-		&.act {
+		&.active {
 			span {
 				color: $font;
 				top: -18px;
@@ -384,8 +388,9 @@
 
 @media (max-width: 1150px) {
 	#order {
-		margin-left: auto;
+		margin-right: auto;
 		width: 100%;
+		max-width: 500px;
 		margin-top: $hhm;
 		padding: 19px 20px 19px 15px;
 
@@ -407,6 +412,7 @@
 			font-size: 30px;
 			line-height: 147.7%;
 			margin-bottom: 19px;
+			padding-right: 30px;
 		}
 
 		.text {
@@ -419,7 +425,6 @@
 		.radio_select {
 			display: block;
 			width: 100%;
-			max-width: 340px;
 			border: 1px solid rgba(#000, 0.7);
 			box-sizing: border-box;
 			border-radius: 5px;
@@ -440,7 +445,7 @@
 				display: none;
 			}
 
-			&.act {
+			&.active {
 				max-height: 280px;
 
 				svg {
@@ -482,7 +487,6 @@
 		.input {
 			height: 39px;
 			width: 100%;
-			max-width: 340px;
 			margin-bottom: 16px;
 			line-height: 38px;
 			font-weight: 300;
@@ -495,7 +499,7 @@
 				font-size: 18px;
 			}
 
-			&.act {
+			&.active {
 				span {
 					color: $font;
 					top: -12px;
@@ -508,7 +512,6 @@
 			margin-top: 27px;
 			margin-bottom: 53px;
 			width: 100%;
-			max-width: 340px;
 
 			span {
 				font-size: 18px;
@@ -591,6 +594,18 @@
 			transform: rotate(180deg);
 			margin-right: 13px;
 		}
+	}
+}
+
+@media (max-width: 1650px) {
+	.thanks_mailing {
+		transform: translateY($hh/2);
+	}
+}
+
+@media (max-width: 1150px) {
+	.thanks_mailing {
+		transform: translateY($hhm/2);
 	}
 }
 

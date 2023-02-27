@@ -81,10 +81,10 @@ export function PopUp({ title, text, radioItems, fields, filePlaceholder, submit
 
 	useEffect(() => {
 		if (isPopUpVisible) {
-			setPopUpClassName('act')
+			setPopUpClassName('active')
 		} else {
 			setPopUpClassName(previous => {
-				if (previous === 'act') return 'hid'
+				if (previous === 'active') return 'hidden'
 				return ''
 			})
 		}
@@ -96,7 +96,7 @@ export function PopUp({ title, text, radioItems, fields, filePlaceholder, submit
 				<div className='back' onClick={closePopUp} />
 				<p className='title'>{title}</p>
 				<p className='text'>{text}</p>
-				<div className={'radio_select' + (isRadioSelectActive ? ' act' : '')} onClick={selectHandler}>
+				<div className={'radio_select' + (isRadioSelectActive ? ' active' : '')} onClick={selectHandler}>
 					{radioItems
 						.slice()
 						.sort((a, b) => {
@@ -109,7 +109,7 @@ export function PopUp({ title, text, radioItems, fields, filePlaceholder, submit
 						.map((radio, i) => (
 							<div
 								key={i}
-								className={(i ? 'radio_item' : 'first_radio_item') + (selectedRadio === radio.title ? ' act' : '')}
+								className={(i ? 'radio_item' : 'first_radio_item') + (selectedRadio === radio.title ? ' active' : '')}
 								onClick={() => setSelectedRadio(radio.title)}>
 								<div className='radio' />
 								<span>{radio.title}</span>
@@ -118,7 +118,7 @@ export function PopUp({ title, text, radioItems, fields, filePlaceholder, submit
 						))}
 				</div>
 				{Object.keys(fields).map((name, i) => (
-					<label key={i} className={'input_label' + (fieldsValue[name] && ' act')}>
+					<label key={i} className={'input_label' + (fieldsValue[name] && ' active')}>
 						<span>{fields[name].title}</span>
 						<input
 							name={name}

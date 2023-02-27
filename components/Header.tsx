@@ -7,6 +7,44 @@ import { BEAT_NUMBER } from '../lib/constants'
 import { usePopUp } from './PopUpContext'
 import { usePopUpMailing } from './PopUpMailingContext'
 
+const menu = [
+	{
+		path: 'main',
+		title: 'Главная',
+		isAnchor: true,
+	},
+	{
+		path: 'services',
+		title: 'Услуги',
+		isAnchor: false,
+	},
+	{
+		path: 'how',
+		title: 'Как мы работаем',
+		isAnchor: true,
+	},
+	{
+		path: 'about',
+		title: 'О компании',
+		isAnchor: true,
+	},
+	{
+		path: 'portfolio',
+		title: 'Портфолио',
+		isAnchor: false,
+	},
+	{
+		path: 'contacts',
+		title: 'Контакты',
+		isAnchor: true,
+	},
+	{
+		path: 'job',
+		title: 'Вакансии',
+		isAnchor: false,
+	},
+]
+
 export function Header() {
 	const { isPopUpVisible, closePopUp } = usePopUp()
 	const { isPopUpMailingVisible, setIsPopUpMailingVisible } = usePopUpMailing()
@@ -89,65 +127,54 @@ export function Header() {
 
 	useEffect(() => {
 		if (isHeaderActive || isPopUpVisible || isPopUpMailingVisible) {
-			document.body.classList.add('hid')
-			document.querySelector('#wrap')?.classList.add('act')
+			document.body.classList.add('hidden')
+			document.querySelector('#wrap')?.classList.add('active')
 		} else {
-			document.body.classList.remove('hid')
-			document.querySelector('#wrap')?.classList.remove('act')
+			document.body.classList.remove('hidden')
+			document.querySelector('#wrap')?.classList.remove('active')
 		}
 	}, [isHeaderActive, isPopUpVisible, isPopUpMailingVisible])
-
-	const liProps = (title: string) => ({
-		className: activeLi === title ? 'act' : '',
-		onClick: clickHandler,
-		onMouseEnter: mouseEnterHandler(activeLi === title),
-		onMouseLeave: mouseLeaveHandler,
-	})
 
 	return (
 		<header
 			id='header'
-			className={isHeaderActive ? 'act' : ''}
+			className={isHeaderActive ? 'active' : ''}
 			onClick={() => {
 				closePopUp()
 				setIsPopUpMailingVisible(false)
 			}}>
-			<div className={`circle${isHeaderActive ? ' act' : ''}`}></div>
+			<div className={`circle${isHeaderActive ? ' active' : ''}`} />
 			<AnchorLink className='logo' anchor='main' onClick={clickHandler}>
 				<Logo pastBeat={beat} />
 				<span>ARTCODE</span>
 			</AnchorLink>
-			<nav className={`menu${isHeaderActive ? ' act' : ''}`}>
-				<div className={`line ${lineRotation}`}></div>
+			<nav className={`menu${isHeaderActive ? ' active' : ''}`}>
+				<div className={`line ${lineRotation}`} />
 				<ul>
-					<li {...liProps('main')}>
-						<AnchorLink anchor='main'>Главная</AnchorLink>
-					</li>
-					<li {...liProps('services')}>
-						<Link href='services'>Услуги</Link>
-					</li>
-					<li {...liProps('how')}>
-						<AnchorLink anchor='how'>Как мы работаем</AnchorLink>
-					</li>
-					<li {...liProps('about')}>
-						<AnchorLink anchor='about'>О компании</AnchorLink>
-					</li>
-					<li {...liProps('portfolio')}>
-						<Link href='portfolio'>Портфолио</Link>
-					</li>
-					<li {...liProps('contacts')}>
-						<AnchorLink anchor='contacts'>Контакты</AnchorLink>
-					</li>
-					<li {...liProps('job')}>
-						<Link href='job'>Вакансии</Link>
-					</li>
+					{menu.map((item, i) => (
+						<li
+							key={i}
+							className={activeLi === item.path ? 'active' : ''}
+							onClick={clickHandler}
+							onMouseEnter={mouseEnterHandler(activeLi === item.path)}
+							onMouseLeave={mouseLeaveHandler}
+							style={{
+								transitionDelay: isHeaderActive ? `${0.3 + 0.02 * i}s` : '0s',
+							}}>
+							{item.isAnchor ? (
+								<AnchorLink anchor={item.path}>{item.title}</AnchorLink>
+							) : (
+								<Link href={item.path}>{item.title}</Link>
+							)}
+						</li>
+					))}
 				</ul>
-				<div className={`line ${lineRotation}`}></div>
+				<div className={`line ${lineRotation}`} />
 			</nav>
-			<div className={`burger${isHeaderActive ? ' act' : ''}`} onClick={burgerClickHandler}>
-				<div className='line line1'></div>
-				<div className='line line2'></div>
-				<div className='line line3'></div>
+			<div className={`burger${isHeaderActive ? ' active' : ''}`} onClick={burgerClickHandler}>
+				<div className='line line1' />
+				<div className='line line2' />
+				<div className='line line3' />
 			</div>
 			<div className='contacts'>
 				<Link href='https://www.instagram.com/artcode.web' target='_blank' rel='noreferrer'>

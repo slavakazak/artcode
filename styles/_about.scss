@@ -79,7 +79,7 @@
 			max-height: 0;
 			transition-duration: 0.4s;
 
-			&.act {
+			&.active {
 				max-height: 400px;
 			}
 		}
@@ -99,9 +99,12 @@
 				margin-left: 15px;
 			}
 
-			&.hid {
+			&.hidden {
 				opacity: 0;
 				cursor: default;
+				margin-top: 0;
+				height: 0;
+				overflow: hidden;
 			}
 		}
 	}

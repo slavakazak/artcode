@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, ChangeEvent } from 'react'
 
 interface СaptchaInterface {
 	checkbox: boolean
@@ -12,7 +12,7 @@ export function Captcha({ checkbox, setCheckbox }: СaptchaInterface) {
 			style={{ display: 'none' }}
 			name='checkbox'
 			checked={checkbox}
-			onClick={() => setCheckbox((previous: boolean) => !previous)}
+			onChange={(event: ChangeEvent<HTMLInputElement>) => setCheckbox(event.target.checked)}
 		/>
 	)
 }

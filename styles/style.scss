@@ -89,7 +89,7 @@ html {
 			cursor: pointer;
 		}
 
-		&.hid {
+		&.hidden {
 			overflow: hidden;
 		}
 	}
@@ -135,7 +135,7 @@ h2 {
 	#wrap {
 		padding-top: $hhm;
 
-		&.act {
+		&.active {
 			filter: blur(15px);
 		}
 	}

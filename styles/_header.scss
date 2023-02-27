@@ -5,7 +5,7 @@
 	left: 0;
 	background: $red;
 	width: $hw;
-	height: 100vh;
+	height: 100%;
 	text-align: center;
 	color: $back;
 	flex-direction: column;
@@ -149,7 +149,7 @@
 				}
 			}
 
-			&.act {
+			&.active {
 				a, a:active, a:hover, a:focus, button, button:active, button:hover, button:focus {
 					font-weight: 400;
 
@@ -299,6 +299,8 @@
 @media (max-height: 500px) {
 	#header {
 		.logo, .logo:active, .logo:hover, .logo:focus {
+			margin-bottom: 10px;
+
 			svg {
 				height: 50px;
 				margin-bottom: 0;
@@ -318,12 +320,7 @@
 		margin: 5px 0;
 
 		.line {
-			width: 100px;
-			margin: 5px 0 5px 0;
-
-			&:last-child {
-				display: none;
-			}
+			display: none;
 		}
 
 		ul {
@@ -342,13 +339,12 @@
 	#header {
 		background: $back;
 		backdrop-filter: blur(4px);
-		width: 100vw;
+		width: 100%;
 		height: $hh;
 		text-align: center;
 		color: $font;
 		flex-direction: row;
 		justify-content: space-between;
-		animation-name: header_top;
 
 		.logo, .logo:active, .logo:hover, .logo:focus {
 			color: $red;
@@ -407,7 +403,7 @@
 					}
 				}
 
-				&.act {
+				&.active {
 					a, a:active, a:hover, a:focus, button, button:active, button:hover, button:focus {
 						font-weight: 400;
 
@@ -418,16 +414,6 @@
 				}
 			}
 		}
-	}
-}
-
-@keyframes header_top {
-	from {
-		top: -$hh;
-	}
-
-	to {
-		top: 0;
 	}
 }
 
@@ -470,7 +456,7 @@
 		align-items: center;
 		transition-duration: 0.4s;
 
-		&.act {
+		&.active {
 			background: rgba($red, 0);
 		}
 
@@ -485,7 +471,7 @@
 			border-radius: calc(100vw + 100vh);
 			transition-duration: 0.4s;
 
-			&.act {
+			&.active {
 				right: calc(-100vw - 100vh);
 				top: calc(-100vw - 100vh);
 				width: calc(200vw + 200vh);
@@ -546,7 +532,7 @@
 				animation-name: line3_r;
 			}
 
-			&.act {
+			&.active {
 				.line1 {
 					top: 9px;
 					transform: rotate(45deg);
@@ -587,6 +573,7 @@
 				margin-left: 0;
 				padding-left: 30px;
 				transition-duration: 0.4s;
+				transform: translateY(100vh);
 
 				a, a:active, a:hover, a:focus, button, button:active, button:hover, button:focus {
 					width: 100%;
@@ -596,92 +583,23 @@
 					font-size: 30px;
 					transition-duration: 0s;
 					text-align: left;
+					padding: 0;
 				}
 
-				&.act {
+				&.active {
 					a, a:active, a:hover, a:focus, button, button:active, button:hover, button:focus {
 						font-weight: 400;
 					}
 				}
-
-				&:nth-child(1) {
-					transition-delay: 0s;
-					transform: translateY(100vh);
-				}
-
-				&:nth-child(2) {
-					transition-delay: 0s;
-					transform: translateY(100vh);
-				}
-
-				&:nth-child(3) {
-					transition-delay: 0s;
-					transform: translateY(100vh);
-				}
-
-				&:nth-child(4) {
-					transition-delay: 0s;
-					transform: translateY(100vh);
-				}
-
-				&:nth-child(5) {
-					transition-delay: 0s;
-					transform: translateY(100vh);
-				}
-
-				&:nth-child(6) {
-					transition-delay: 0s;
-					transform: translateY(100vh);
-				}
-
-				&:nth-child(7) {
-					transition-delay: 0s;
-					transform: translateY(100vh);
-				}
 			}
 		}
 
-		&.act {
+		&.active {
 			opacity: 1;
 			left: 0;
 
-			ul {
-				li {
-					&:nth-child(1) {
-						transition-delay: 0.3s;
-						transform: translateY(0px);
-					}
-
-					&:nth-child(2) {
-						transition-delay: 0.32s;
-						transform: translateY(0px);
-					}
-
-					&:nth-child(3) {
-						transition-delay: 0.34s;
-						transform: translateY(0px);
-					}
-
-					&:nth-child(4) {
-						transition-delay: 0.36s;
-						transform: translateY(0px);
-					}
-
-					&:nth-child(5) {
-						transition-delay: 0.38s;
-						transform: translateY(0px);
-					}
-
-					&:nth-child(6) {
-						transition-delay: 0.4s;
-						transform: translateY(0px);
-					}
-
-					&:nth-child(7) {
-						transition-delay: 0.42s;
-						transform: translateY(0px);
-					}
-				}
+			ul li {
+				transform: translateY(0px);
 			}
 		}
 	}

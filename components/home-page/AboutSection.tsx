@@ -19,16 +19,14 @@ export function AboutSection() {
 							<br />
 							Наша веб-студия предоставляет бесплатную техническую поддержку проектов в течение двух месяцев.
 						</p>
-						<p className={'text text_close' + (isTextVisible ? ' act' : '')}>
+						<p className={'text text_close' + (isTextVisible ? ' active' : '')}>
 							<br />
 							При работе мы придерживаемся следующих принципов:
-							<br />
-							- свежий взгляд на дизайн;
-							<br />
-							- качественная оптимизация работы сайта;
+							<br />- свежий взгляд на дизайн;
+							<br />- качественная оптимизация работы сайта;
 							<br />- своевременная обратная связь.
 						</p>
-						<div className={'read_more' + (isTextVisible ? ' hid' : '')} onClick={() => setIsTextVisible(true)}>
+						<div className={'read_more' + (isTextVisible ? ' hidden' : '')} onClick={() => setIsTextVisible(true)}>
 							Читать далее
 							<svg width='34' height='8' viewBox='0 0 34 8' fill='none'>
 								<path

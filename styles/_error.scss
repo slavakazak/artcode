@@ -1,4 +1,4 @@
-#page_404 {
+#page_404, #page_500 {
 	min-height: 100vh;
 	padding-top: 70px;
 	padding-bottom: 70px;
@@ -54,7 +54,7 @@
 }
 
 @media (max-width: 1650px) {
-	#page_404 {
+	#page_404, #page_500 {
 		min-height: calc(100vh - $hh);
 		display: block;
 		padding-top: 50px;
@@ -63,7 +63,7 @@
 }
 
 @media (max-width: 1150px) {
-	#page_404 {
+	#page_404, #page_500 {
 		padding-top: 33px;
 		padding-bottom: 52px;
 		padding-left: 17px;

@@ -27,7 +27,7 @@ article, aside, details, figcaption, figure,
 footer, hgroup, menu, nav, section {
 	display: block;
 	position: relative;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 header {
@@ -246,6 +246,6 @@ h2 {
 @import 'portfolio';
 @import 'job';
 @import 'pop-up';
-@import '404';
+@import 'error';
 @import 'thanks';
 @import 'footer';

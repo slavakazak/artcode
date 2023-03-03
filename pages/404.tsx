@@ -15,7 +15,7 @@ export default function ErrorPage404() {
 							<Link href='/'>Вернуться на главную</Link>
 						</div>
 						<div className='col'>
-							<ExportedImage src='/img/logo.png' width={430} height={398} priority alt='ARTCODE' />
+							<ExportedImage src='/img/logo.png' width={430} height={398} priority alt='ARTCODE' placeholder='empty' />
 						</div>
 					</div>
 				</div>

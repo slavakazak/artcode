@@ -37,6 +37,7 @@ export function MainSection() {
 					priority
 					src='/img/screen_mobile.png'
 					alt='screen_mobile'
+					placeholder='empty'
 				/>
 				<ExportedImage
 					className='screen screen2'
@@ -45,6 +46,7 @@ export function MainSection() {
 					priority
 					src='/img/screen.png'
 					alt='screen'
+					placeholder='empty'
 				/>
 				<ExportedImage
 					className='screen screen3'
@@ -53,6 +55,7 @@ export function MainSection() {
 					priority
 					src='/img/screen_mobile.png'
 					alt='screen_mobile'
+					placeholder='empty'
 				/>
 			</div>
 			<button

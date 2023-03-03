@@ -27,6 +27,7 @@ export function PortfolioCard({ imageSrc, href, tags, title, index = 0 }: Portfo
               ${PORTFOLIO_IMAGE_WIDTH}px`}
 				priority={index < 10}
 				alt='portfolio'
+				placeholder='empty'
 			/>
 			<div className='inf'>
 				<div className='col'>

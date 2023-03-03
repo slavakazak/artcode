@@ -37,7 +37,7 @@ export function AboutSection() {
 						</div>
 					</div>
 					<div className='col' data-animate='fadeInRight'>
-						<ExportedImage src='/img/about.png' fill sizes='605' alt='about' />
+						<ExportedImage src='/img/about.png' fill sizes='605' alt='about' placeholder='empty' />
 					</div>
 				</div>
 			</div>

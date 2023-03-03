@@ -1,5 +1,3 @@
-import Image from 'next/image'
-import Link from 'next/link'
 import { Footer } from '../components/Footer'
 import { MainLayout } from '../components/MainLayout'
 import { PortfolioCard } from '../components/PortfolioCard'

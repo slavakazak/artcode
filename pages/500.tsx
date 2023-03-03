@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import ExportedImage from 'next-image-export-optimizer'
 import { MainLayout } from '../components/MainLayout'
 
 export default function ErrorPage500() {
@@ -15,7 +15,7 @@ export default function ErrorPage500() {
 							<Link href='/'>Вернуться на главную</Link>
 						</div>
 						<div className='col'>
-							<Image src='/img/logo.png' width={430} height={398} priority alt='ARTCODE' />
+							<ExportedImage src='/img/logo.png' width={430} height={398} priority alt='ARTCODE' />
 						</div>
 					</div>
 				</div>

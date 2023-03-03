@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Image from 'next/image'
+import ExportedImage from 'next-image-export-optimizer'
 
 export function AboutSection() {
 	const [isTextVisible, setIsTextVisible] = useState(false)
@@ -37,7 +37,7 @@ export function AboutSection() {
 						</div>
 					</div>
 					<div className='col' data-animate='fadeInRight'>
-						<Image src='/img/about.png' fill sizes='605' alt='about' />
+						<ExportedImage src='/img/about.png' fill sizes='605' alt='about' />
 					</div>
 				</div>
 			</div>

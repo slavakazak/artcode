@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import ExportedImage from 'next-image-export-optimizer'
 import { Footer } from '../components/Footer'
 import { MainLayout } from '../components/MainLayout'
 import { jobs } from '../lib/constants'
@@ -28,7 +28,7 @@ export default function Job() {
 						))}
 					</div>
 					<div className='img_cont'>
-						<Image src='/img/job.png' width={1066} height={365} priority alt='job' />
+						<ExportedImage src='/img/job.png' width={1066} height={365} priority alt='job' />
 					</div>
 				</div>
 			</section>

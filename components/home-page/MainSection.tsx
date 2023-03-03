@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
+import ExportedImage from 'next-image-export-optimizer'
 import { MainSlider } from './MainSlider'
 import { smoothScrollTo } from '../../lib/smoothScrollTo'
 import { usePopUp } from '../PopUpContext'
@@ -30,7 +30,7 @@ export function MainSection() {
 				</MainSlider>
 			</div>
 			<div className='screens'>
-				<Image
+				<ExportedImage
 					className='screen screen1'
 					width={634}
 					height={634}
@@ -38,8 +38,15 @@ export function MainSection() {
 					src='/img/screen_mobile.png'
 					alt='screen_mobile'
 				/>
-				<Image className='screen screen2' width={1024} height={900} priority src='/img/screen.png' alt='screen' />
-				<Image
+				<ExportedImage
+					className='screen screen2'
+					width={1024}
+					height={900}
+					priority
+					src='/img/screen.png'
+					alt='screen'
+				/>
+				<ExportedImage
 					className='screen screen3'
 					width={634}
 					height={634}

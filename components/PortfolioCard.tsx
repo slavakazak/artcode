@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import ExportedImage from 'next-image-export-optimizer'
 import Link from 'next/link'
 import {
 	SMALL_BREAKPOINT,
@@ -19,7 +19,7 @@ interface PortfolioCardInterface {
 export function PortfolioCard({ imageSrc, href, tags, title, index = 0 }: PortfolioCardInterface) {
 	return (
 		<div className='portfolio_card' data-animate='fadeInUp' data-mobile-animate='fadeInLeft' data-delay={index % 3}>
-			<Image
+			<ExportedImage
 				src={imageSrc}
 				fill
 				sizes={`(max-width: ${SMALL_BREAKPOINT}px) ${PORTFOLIO_IMAGE_WIDTH_SMALL}px,

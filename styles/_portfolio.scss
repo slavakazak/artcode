@@ -37,9 +37,15 @@
 		width: 600px;
 		border-radius: 30px;
 
-		img {
+		.img-wrapper {
 			width: 100%;
 			height: 340px;
+			position: relative;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
 			object-fit: cover;
 			object-position: center top;
 			border-radius: 20px;
@@ -65,7 +71,7 @@
 		.portfolio_card, .portfolio_card:active, .portfolio_card:hover, .portfolio_card:focus {
 			width: 520px;
 
-			img {
+			.img-wrapper {
 				height: 295px;
 			}
 		}
@@ -102,7 +108,7 @@
 			margin-left: 10px;
 			margin-right: 10px;
 
-			img {
+			.img-wrapper {
 				height: 227px;
 			}
 
@@ -127,7 +133,7 @@
 		}
 
 		.portfolio_card, .portfolio_card:active, .portfolio_card:hover, .portfolio_card:focus {
-			img {
+			.img-wrapper {
 				height: 180px;
 			}
 		}

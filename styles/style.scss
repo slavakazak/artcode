@@ -104,7 +104,8 @@ html {
 
 .container {
 	width: 1270px;
-	margin: auto;
+	//	margin: auto;
+	margin-left: calc((100vw - 1270px - $hw)/2);
 	position: relative;
 }
 
@@ -122,12 +123,14 @@ h2 {
 
 	.container {
 		width: 1350px;
+		margin-left: calc((100vw - 1350px)/2);
 	}
 }
 
 @media (max-width: 1400px) {
 	.container {
 		width: 1100px;
+		margin-left: calc((100vw - 1100px)/2);
 	}
 }
 
@@ -142,6 +145,7 @@ h2 {
 
 	.container {
 		width: 100%;
+		margin-left: 0;
 	}
 
 	h2 {
@@ -185,36 +189,36 @@ h2 {
 @keyframes fadeInUp {
 	from {
 		opacity: 0;
-		transform: translate3d(0, 100%, 0);
+		transform: translateY(100%);
 	}
 
 	to {
 		opacity: 1;
-		transform: translate3d(0, 0, 0);
+		transform: translateY(0);
 	}
 }
 
 @keyframes fadeInLeft {
 	from {
 		opacity: 0;
-		transform: translate3d(-100%, 0, 0);
+		transform: translateX(-100%);
 	}
 
 	to {
 		opacity: 1;
-		transform: translate3d(0, 0, 0);
+		transform: translateX(0);
 	}
 }
 
 @keyframes fadeInRight {
 	from {
 		opacity: 0;
-		transform: translate3d(100%, 0, 0);
+		transform: translateX(100%);
 	}
 
 	to {
 		opacity: 1;
-		transform: translate3d(0, 0, 0);
+		transform: translateX(0);
 	}
 }
 

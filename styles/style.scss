@@ -27,7 +27,7 @@ article, aside, details, figcaption, figure,
 footer, hgroup, menu, nav, section {
 	display: block;
 	position: relative;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 header {

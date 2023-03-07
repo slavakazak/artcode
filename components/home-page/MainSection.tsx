@@ -36,7 +36,7 @@ export function MainSection() {
 					height={634}
 					priority
 					src='/img/screen_mobile.png'
-					alt='screen_mobile'
+					alt='screen mobile'
 					placeholder='empty'
 				/>
 				<ExportedImage
@@ -54,14 +54,15 @@ export function MainSection() {
 					height={634}
 					priority
 					src='/img/screen_mobile.png'
-					alt='screen_mobile'
+					alt='screen mobile'
 					placeholder='empty'
 				/>
 			</div>
 			<button
 				className='bottom_scroll'
 				style={{ opacity: bottomScrollOpacity }}
-				onClick={() => smoothScrollTo('services')}>
+				onClick={() => smoothScrollTo('services')}
+				aria-label='Далее'>
 				<svg className='arr' viewBox='0 0 17 26' fill='none'>
 					<path d='M7.08333 0.25L7.08333 20.3242L1.9975 15.2525L-3.71547e-07 17.25L8.5 25.75L17 17.25L15.0025 15.2525L9.91667 20.3242L9.91666 0.25L7.08333 0.25Z' />
 				</svg>

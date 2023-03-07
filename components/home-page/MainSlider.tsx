@@ -78,7 +78,9 @@ export function MainSlider({ children }: MainSliderInterface) {
 						key={i}
 						onClick={() => sliderEl.current?.slickGoTo(i)}
 						className={'dot' + (currentSlide === i ? ' active' : '')}
-						style={{ width: width > SMALL_BREAKPOINT ? LINE_WIDTH + 'px' : '31px' }}></button>
+						style={{ width: width > SMALL_BREAKPOINT ? LINE_WIDTH + 'px' : '31px' }}
+						aria-label={'Слайд ' + (i + 1)}
+					/>
 				))}
 				<span className='number'>{(currentSlide < 9 ? '0' : '') + (currentSlide + 1)}</span>
 				<div className='full_line' style={{ width: FULL_LINE_WIDTH + 'px' }}>
